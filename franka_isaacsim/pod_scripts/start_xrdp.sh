@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Install XFCE + xrdp and start RDP on 127.0.0.1:3389.
+# Target: the ROS 2 Jazzy container (osrf/ros:jazzy-desktop-full, Ubuntu 24.04,
+# root, no systemd).
 # Do not publish 3389 — SSH-tunnel it, same as VNC.
 #
 #   ./start_xrdp.sh              # install if needed, start
@@ -39,10 +41,12 @@ systemd_live() {
 
 # Dead Remmina links otherwise sit "connected" for hours (Linux default
 # keepalive is 2h). Then the next login creates :11 and Isaac stays on :10.
+# /proc/sys is read-only in unprivileged containers; then set these with
+# docker run --sysctl net.ipv4.tcp_keepalive_time=30 ... instead.
 short_tcp_keepalive() {
-  sysctl -w net.ipv4.tcp_keepalive_time=30 >/dev/null
-  sysctl -w net.ipv4.tcp_keepalive_intvl=5 >/dev/null
-  sysctl -w net.ipv4.tcp_keepalive_probes=3 >/dev/null
+  sysctl -w net.ipv4.tcp_keepalive_time=30 >/dev/null 2>&1 || return 1
+  sysctl -w net.ipv4.tcp_keepalive_intvl=5 >/dev/null 2>&1
+  sysctl -w net.ipv4.tcp_keepalive_probes=3 >/dev/null 2>&1
 }
 
 # Keep Xvnc :10 (Isaac) and the optional VNC helper on :1. Kill :11, :12, …
@@ -72,7 +76,8 @@ ensure_tls_readable() {
   if ! id xrdp >/dev/null 2>&1; then
     return 0
   fi
-  if sudo -u xrdp test -r /etc/xrdp/key.pem 2>/dev/null; then
+  # runuser (util-linux) instead of sudo: the container has no sudo.
+  if runuser -u xrdp -- test -r /etc/xrdp/key.pem 2>/dev/null; then
     return 0
   fi
   # systemd unit runs as user xrdp; snakeoil key is 640 root:ssl-cert.
@@ -117,7 +122,11 @@ prepare_apt_sources() {
 
 case "${1:-start}" in
 start)
-  if ! command -v xrdp >/dev/null || ! command -v startxfce4 >/dev/null; then
+  need_install=false
+  for cmd in xrdp startxfce4 Xtigervnc ss pgrep openssl xrandr xrdb; do
+    command -v "$cmd" >/dev/null || need_install=true
+  done
+  if $need_install; then
     echo "Installing XFCE + xrdp..."
     export DEBIAN_FRONTEND=noninteractive
     prepare_apt_sources
@@ -128,10 +137,11 @@ start)
       update
     apt-get install -y --no-install-recommends \
       xrdp xfce4 xfce4-terminal dbus-x11 \
-      tigervnc-standalone-server
+      tigervnc-standalone-server \
+      x11-xserver-utils iproute2 procps openssl ssl-cert ca-certificates
   fi
 
-  # sesman calls "Xvnc"; Ubuntu 22 only ships Xtigervnc.
+  # sesman calls "Xvnc"; Ubuntu 22.04/24.04 only ship Xtigervnc.
   command -v Xvnc >/dev/null || ln -sf "$(command -v Xtigervnc)" /usr/local/bin/Xvnc
 
   # xfwm4 default easy_click=Alt steals Alt+Left/Right from Isaac Sim orbit.
@@ -156,9 +166,16 @@ XML
   # Remmina often connects at the tiny window size (e.g. 636x396); the client
   # then scales that up and every icon looks huge.
   GEOMETRY="${XRDP_GEOMETRY:-1920x1080}"
+  # sesman starts the desktop with a clean environment, so the Docker ENV
+  # (RMW, Fast DDS profile, domain) would be missing in XFCE terminals and in
+  # Isaac Sim launched from there. Bake the current values in.
   cat > /etc/xrdp/startwm.sh <<EOF
 #!/bin/sh
 GEOMETRY=${GEOMETRY}
+export ROS_DISTRO=${ROS_DISTRO:-jazzy}
+export RMW_IMPLEMENTATION=${RMW_IMPLEMENTATION:-rmw_fastrtps_cpp}
+export FASTRTPS_DEFAULT_PROFILES_FILE=${FASTRTPS_DEFAULT_PROFILES_FILE:-/root/.ros/fastdds.xml}
+export ROS_DOMAIN_ID=${ROS_DOMAIN_ID:-0}
 EOF
   cat >> /etc/xrdp/startwm.sh <<'EOF'
 unset DBUS_SESSION_BUS_ADDRESS
@@ -227,6 +244,8 @@ EOF
     pgrep -x xrdp-sesman >/dev/null || /usr/sbin/xrdp-sesman
   fi
   pgrep -x xrdp >/dev/null || /usr/sbin/xrdp
+  # xrdp takes ~2 s to bind after forking.
+  for _ in $(seq 1 20); do is_up && break; sleep 0.5; done
 
   if ! sesman_ipv4_ok; then
     echo "error: sesman still not reachable on 127.0.0.1:${SESMAN_PORT}" >&2
