@@ -1,0 +1,247 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "isaacsim6-sensor-test-world",
+  "title": "Isaac Sim 6 mobile sensor-test world",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "world_name",
+    "gravity_m_s2",
+    "floor",
+    "lighting",
+    "robot_spawn",
+    "materials",
+    "clear_corridor",
+    "targets"
+  ],
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "world_name": { "type": "string", "minLength": 1 },
+    "gravity_m_s2": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": { "type": "number" }
+    },
+    "floor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "size_m",
+        "thickness_m",
+        "static_friction",
+        "dynamic_friction",
+        "restitution",
+        "color_rgb"
+      ],
+      "properties": {
+        "size_m": { "type": "number", "exclusiveMinimum": 0 },
+        "thickness_m": { "type": "number", "minimum": 1.0 },
+        "static_friction": { "type": "number", "minimum": 0 },
+        "dynamic_friction": { "type": "number", "minimum": 0 },
+        "restitution": { "type": "number", "minimum": 0 },
+        "color_rgb": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      }
+    },
+    "lighting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "key_intensity",
+        "key_color_rgb",
+        "key_rotate_xyz_deg",
+        "dome_intensity",
+        "dome_color_rgb"
+      ],
+      "properties": {
+        "key_intensity": { "type": "number", "exclusiveMinimum": 0 },
+        "key_color_rgb": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "type": "number", "minimum": 0, "maximum": 1 }
+        },
+        "key_rotate_xyz_deg": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "type": "number" }
+        },
+        "dome_intensity": { "type": "number", "minimum": 0 },
+        "dome_color_rgb": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      }
+    },
+    "robot_spawn": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["translation_m", "rotate_xyz_deg"],
+      "properties": {
+        "translation_m": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "type": "number" }
+        },
+        "rotate_xyz_deg": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "type": "number" }
+        }
+      }
+    },
+    "materials": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "red",
+        "green",
+        "blue",
+        "yellow",
+        "magenta",
+        "white",
+        "black"
+      ],
+      "properties": {
+        "red": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "type": "number", "minimum": 0, "maximum": 1 }
+        },
+        "green": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "type": "number", "minimum": 0, "maximum": 1 }
+        },
+        "blue": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "type": "number", "minimum": 0, "maximum": 1 }
+        },
+        "yellow": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "type": "number", "minimum": 0, "maximum": 1 }
+        },
+        "magenta": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "type": "number", "minimum": 0, "maximum": 1 }
+        },
+        "white": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "type": "number", "minimum": 0, "maximum": 1 }
+        },
+        "black": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      }
+    },
+    "clear_corridor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x_min_m", "x_max_m", "y_min_m", "y_max_m", "description"],
+      "properties": {
+        "x_min_m": { "type": "number" },
+        "x_max_m": { "type": "number" },
+        "y_min_m": { "type": "number" },
+        "y_max_m": { "type": "number" },
+        "description": { "type": "string", "minLength": 1 }
+      }
+    },
+    "targets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "shape",
+          "purpose",
+          "color",
+          "translation_m",
+          "rotate_xyz_deg",
+          "dimensions_m",
+          "collision"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[A-Za-z][A-Za-z0-9_]*$"
+          },
+          "shape": {
+            "type": "string",
+            "enum": ["box", "cylinder", "sphere"]
+          },
+          "purpose": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "enum": ["camera", "lidar"]
+            },
+            "uniqueItems": true
+          },
+          "color": {
+            "type": "string",
+            "enum": [
+              "red",
+              "green",
+              "blue",
+              "yellow",
+              "magenta",
+              "white",
+              "black"
+            ]
+          },
+          "translation_m": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": { "type": "number" }
+          },
+          "rotate_xyz_deg": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": { "type": "number" }
+          },
+          "dimensions_m": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["x", "y", "z"],
+            "properties": {
+              "x": { "type": "number", "exclusiveMinimum": 0 },
+              "y": { "type": "number", "exclusiveMinimum": 0 },
+              "z": { "type": "number", "exclusiveMinimum": 0 }
+            }
+          },
+          "collision": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

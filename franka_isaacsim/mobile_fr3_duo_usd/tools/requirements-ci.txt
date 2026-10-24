@@ -1,0 +1,6 @@
+# Declared dependencies for ordinary CI / offline config validation.
+# The safety workflow installs this file; load_config fails if jsonschema is missing.
+# NumPy is required at import time by attachment_stability (and other offline helpers).
+# Pin exactly so CI validation does not float across an open version range.
+jsonschema==4.23.0
+numpy==2.4.6

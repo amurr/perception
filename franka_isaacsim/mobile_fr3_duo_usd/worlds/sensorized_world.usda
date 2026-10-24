@@ -1,0 +1,1457 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 8.28118438720703
+            }
+            dictionary Perspective = {
+                double3 position = (5, 5, 5)
+                double3 target = (-3.978038431995401e-8, -3.978038254359717e-8, 7.956076863990802e-8)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/World/OverviewCamera"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./sensorized_world.usda"
+        }
+        dictionary renderSettings = {
+        }
+    }
+    defaultPrim = "World"
+    doc = """Sensorized world entrypoint with collision floor, neutral lighting,
+ colored camera/lidar targets, and a relative robot reference.
+ Activate native sensors via bootstrap_native_sensors.py; visual/geometric targets only until bootstrap runs."""
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+    def PhysicsScene "physicsScene" (
+        prepend apiSchemas = ["NewtonSceneAPI", "PhysxSceneAPI"]
+    )
+    {
+        vector3f physics:gravityDirection = (0, 0, -1)
+        float physics:gravityMagnitude = 9.81
+    }
+
+    def Xform "Robot" (
+        prepend references = @../mobile_fr3_duo_with_vision_and_manipulation_kit.usda@
+    )
+    {
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:translate = (0, 0, 0.05)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+
+        over "Physics"
+        {
+            over "base_inertia_joint"
+            {
+                bool[] isaac:actuator (
+                    displayName = "Actuator"
+                )
+                string isaac:NameOverride (
+                    displayName = "Joint Name Override"
+                )
+                token[] isaac:physics:DofOffsetOpOrder (
+                    displayName = "Dof Offset Op Order"
+                )
+                bool physics:jointEnabled = 1
+            }
+
+            over "imu_mounting_point_joint"
+            {
+                bool[] isaac:actuator (
+                    displayName = "Actuator"
+                )
+                string isaac:NameOverride (
+                    displayName = "Joint Name Override"
+                )
+                token[] isaac:physics:DofOffsetOpOrder (
+                    displayName = "Dof Offset Op Order"
+                )
+            }
+
+            over "lidar_rear_mounting_point_joint"
+            {
+                bool[] isaac:actuator (
+                    displayName = "Actuator"
+                )
+                string isaac:NameOverride (
+                    displayName = "Joint Name Override"
+                )
+                token[] isaac:physics:DofOffsetOpOrder (
+                    displayName = "Dof Offset Op Order"
+                )
+            }
+
+            over "lidar_front_mounting_point_joint"
+            {
+                bool[] isaac:actuator (
+                    displayName = "Actuator"
+                )
+                string isaac:NameOverride (
+                    displayName = "Joint Name Override"
+                )
+                token[] isaac:physics:DofOffsetOpOrder (
+                    displayName = "Dof Offset Op Order"
+                )
+            }
+
+            over "franka_spine_fixed_joint"
+            {
+                bool[] isaac:actuator (
+                    displayName = "Actuator"
+                )
+                string isaac:NameOverride (
+                    displayName = "Joint Name Override"
+                )
+                token[] isaac:physics:DofOffsetOpOrder (
+                    displayName = "Dof Offset Op Order"
+                )
+            }
+
+            over "fr3_duo_mount_origin_joint"
+            {
+                bool[] isaac:actuator (
+                    displayName = "Actuator"
+                )
+                string isaac:NameOverride (
+                    displayName = "Joint Name Override"
+                )
+                token[] isaac:physics:DofOffsetOpOrder (
+                    displayName = "Dof Offset Op Order"
+                )
+            }
+
+            over "head_joint"
+            {
+                bool[] isaac:actuator (
+                    displayName = "Actuator"
+                )
+                string isaac:NameOverride (
+                    displayName = "Joint Name Override"
+                )
+                token[] isaac:physics:DofOffsetOpOrder (
+                    displayName = "Dof Offset Op Order"
+                )
+            }
+
+            over "fr3_duo_mount_left_joint"
+            {
+                bool[] isaac:actuator (
+                    displayName = "Actuator"
+                )
+                string isaac:NameOverride (
+                    displayName = "Joint Name Override"
+                )
+                token[] isaac:physics:DofOffsetOpOrder (
+                    displayName = "Dof Offset Op Order"
+                )
+            }
+
+            over "rocker_arm_joint"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "caster_front_left_steering_joint"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "tmrv0_2_joint_0"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "franka_spine_vertical_joint" (
+                customData = {
+                    dictionary omni = {
+                        dictionary kit = {
+                            bool locked = 0
+                        }
+                    }
+                }
+            )
+            {
+                float drive:linear:physics:damping (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                float drive:linear:physics:maxForce (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                float drive:linear:physics:stiffness (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                float drive:linear:physics:targetPosition = 0 (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                float drive:linear:physics:targetVelocity (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                uniform token drive:linear:physics:type (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                bool[] isaac:actuator (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                    displayName = "Actuator"
+                )
+                string isaac:NameOverride (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                    displayName = "Joint Name Override"
+                )
+                token[] isaac:physics:DofOffsetOpOrder (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                    displayName = "Dof Offset Op Order"
+                )
+                uniform token physics:axis (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                rel physics:body0 (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                rel physics:body1 (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                float physics:breakForce (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                float physics:breakTorque (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                bool physics:collisionEnabled (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                uniform bool physics:excludeFromArticulation (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                bool physics:jointEnabled (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                point3f physics:localPos0 = (0.266711, 0, 0.1) (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                point3f physics:localPos1 = (0, 0, 0) (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                quatf physics:localRot0 (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                quatf physics:localRot1 (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                float physics:lowerLimit = 0.5 (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                float physics:upperLimit = 0.5 (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                float physxJoint:armature (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                float physxJoint:jointFriction (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                float physxJoint:maxJointVelocity (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                rel proxyPrim (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                uniform token purpose (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                float state:linear:physics:position = 0 (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                float state:linear:physics:velocity = 0 (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                custom float urdf:limit:effort (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                custom float urdf:limit:velocity (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+                token visibility (
+                    customData = {
+                        dictionary omni = {
+                            dictionary kit = {
+                                bool locked = 0
+                            }
+                        }
+                    }
+                )
+            }
+
+            over "caster_front_left_joint"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "tmrv0_2_joint_1"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "caster_rear_right_steering_joint"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "tmrv0_2_joint_2"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "caster_rear_right_joint"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "tmrv0_2_joint_3"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_fr3v2_1_joint1"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_fr3v2_1_joint1"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_fr3v2_1_joint2"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_fr3v2_1_joint2"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_fr3v2_1_joint3"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_fr3v2_1_joint3"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_fr3v2_1_joint4"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_fr3v2_1_joint4"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_fr3v2_1_joint5"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_fr3v2_1_joint5"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_fr3v2_1_joint6"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_fr3v2_1_joint6"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_fr3v2_1_joint7"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_fr3v2_1_joint7"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_robotiq_85_left_knuckle_joint"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_robotiq_85_right_knuckle_joint"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_robotiq_85_left_inner_knuckle_joint"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_robotiq_85_right_inner_knuckle_joint"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_robotiq_85_left_knuckle_joint"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_robotiq_85_right_knuckle_joint"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_robotiq_85_left_inner_knuckle_joint"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_robotiq_85_right_inner_knuckle_joint"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_robotiq_85_left_finger_tip_joint"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_robotiq_85_right_finger_tip_joint"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_robotiq_85_left_finger_tip_joint"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "right_robotiq_85_right_finger_tip_joint"
+            {
+                float state:angular:physics:position = 0
+                float state:angular:physics:velocity = 0
+            }
+
+            over "left_fr3v2_1_left_base_joint"
+            {
+                bool[] isaac:actuator (
+                    displayName = "Actuator"
+                )
+                string isaac:NameOverride (
+                    displayName = "Joint Name Override"
+                )
+                token[] isaac:physics:DofOffsetOpOrder (
+                    displayName = "Dof Offset Op Order"
+                )
+            }
+
+            over "right_fr3v2_1_right_base_joint"
+            {
+                bool[] isaac:actuator (
+                    displayName = "Actuator"
+                )
+                string isaac:NameOverride (
+                    displayName = "Joint Name Override"
+                )
+                token[] isaac:physics:DofOffsetOpOrder (
+                    displayName = "Dof Offset Op Order"
+                )
+            }
+        }
+
+        over "Geometry"
+        {
+            over "base"
+            {
+                over "base_link"
+                {
+                    over "base_inertia"
+                    {
+                        string isaac:nameOverride (
+                            displayName = "Name Override"
+                        )
+                    }
+
+                    over "franka_spine"
+                    {
+                        string isaac:nameOverride (
+                            displayName = "Name Override"
+                        )
+                        double3 xformOp:translate = (0.138289, 0, 0.35)
+
+                        over "franka_spine_mounting_point"
+                        {
+                            string isaac:nameOverride (
+                                displayName = "Name Override"
+                            )
+
+                            over "fr3_duo_mount_mounting_point"
+                            {
+                                string isaac:nameOverride (
+                                    displayName = "Name Override"
+                                )
+
+                                over "fr3_duo_mount_origin"
+                                {
+                                    string isaac:nameOverride (
+                                        displayName = "Name Override"
+                                    )
+
+                                    over "fr3_duo_mount_right"
+                                    {
+                                        string isaac:nameOverride (
+                                            displayName = "Name Override"
+                                        )
+
+                                        over "right_base"
+                                        {
+                                            over "right_fr3v2_1_link0"
+                                            {
+                                                over "right_fr3v2_1_link1"
+                                                {
+                                                    over "right_fr3v2_1_link2"
+                                                    {
+                                                        over "right_fr3v2_1_link3"
+                                                        {
+                                                            over "right_fr3v2_1_link4"
+                                                            {
+                                                                over "right_fr3v2_1_link5"
+                                                                {
+                                                                    over "right_fr3v2_1_link6"
+                                                                    {
+                                                                        over "right_fr3v2_1_link7"
+                                                                        {
+                                                                            over "right_fr3v2_1_link8"
+                                                                            {
+                                                                                over "right_ur_to_robotiq_link"
+                                                                                {
+                                                                                    over "right_gripper_mount_link"
+                                                                                    {
+                                                                                        over "right_robotiq_85_base_link"
+                                                                                        {
+                                                                                            over "right_robotiq_85_left_knuckle_link"
+                                                                                            {
+                                                                                                over "right_robotiq_85_left_finger_link"
+                                                                                                {
+                                                                                                    over "right_robotiq_85_left_finger_tip_link"
+                                                                                                    {
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+
+                                                                                            over "right_robotiq_85_right_knuckle_link"
+                                                                                            {
+                                                                                                over "right_robotiq_85_right_finger_link"
+                                                                                                {
+                                                                                                    over "right_robotiq_85_right_finger_tip_link"
+                                                                                                    {
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+
+                                                                                            over "right_robotiq_85_left_inner_knuckle_link"
+                                                                                            {
+                                                                                            }
+
+                                                                                            over "right_robotiq_85_right_inner_knuckle_link"
+                                                                                            {
+                                                                                            }
+
+                                                                                            over "right__wrist_camera_mount_casing_link"
+                                                                                            {
+                                                                                                over "right__wrist_camera_mount_link"
+                                                                                                {
+                                                                                                    over "right__wrist_camera_bottom_screw_frame"
+                                                                                                    {
+                                                                                                        over "right__wrist_camera_link"
+                                                                                                        {
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    over "fr3_duo_mount_left"
+                                    {
+                                        over "left_base"
+                                        {
+                                            over "left_fr3v2_1_link0"
+                                            {
+                                                over "left_fr3v2_1_link1"
+                                                {
+                                                    over "left_fr3v2_1_link2"
+                                                    {
+                                                        over "left_fr3v2_1_link3"
+                                                        {
+                                                            over "left_fr3v2_1_link4"
+                                                            {
+                                                                over "left_fr3v2_1_link5"
+                                                                {
+                                                                    over "left_fr3v2_1_link6"
+                                                                    {
+                                                                        over "left_fr3v2_1_link7"
+                                                                        {
+                                                                            over "left_fr3v2_1_link8"
+                                                                            {
+                                                                                over "left_ur_to_robotiq_link"
+                                                                                {
+                                                                                    over "left_gripper_mount_link"
+                                                                                    {
+                                                                                        over "left_robotiq_85_base_link"
+                                                                                        {
+                                                                                            over "left_robotiq_85_left_knuckle_link"
+                                                                                            {
+                                                                                                over "left_robotiq_85_left_finger_link"
+                                                                                                {
+                                                                                                    over "left_robotiq_85_left_finger_tip_link"
+                                                                                                    {
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+
+                                                                                            over "left_robotiq_85_right_knuckle_link"
+                                                                                            {
+                                                                                                over "left_robotiq_85_right_finger_link"
+                                                                                                {
+                                                                                                    over "left_robotiq_85_right_finger_tip_link"
+                                                                                                    {
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+
+                                                                                            over "left_robotiq_85_left_inner_knuckle_link"
+                                                                                            {
+                                                                                            }
+
+                                                                                            over "left_robotiq_85_right_inner_knuckle_link"
+                                                                                            {
+                                                                                            }
+
+                                                                                            over "left__wrist_camera_mount_casing_link"
+                                                                                            {
+                                                                                                over "left__wrist_camera_mount_link"
+                                                                                                {
+                                                                                                    over "left__wrist_camera_bottom_screw_frame"
+                                                                                                    {
+                                                                                                        over "left__wrist_camera_link"
+                                                                                                        {
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                over "head_link"
+                                {
+                                    over "head_camera_mounting_point"
+                                    {
+                                        over "head_camera_link"
+                                        {
+                                            over "head_camera_center"
+                                            {
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    over "caster_front_left_fixed_link"
+                    {
+                        over "caster_front_left_steering_link"
+                        {
+                            over "caster_front_left_link"
+                            {
+                            }
+                        }
+                    }
+
+                    over "argo_drive_front_fixed_link"
+                    {
+                        over "argo_drive_front_steering_link"
+                        {
+                            over "argo_drive_front_link"
+                            {
+                            }
+                        }
+                    }
+
+                    over "rocker_arm_link"
+                    {
+                        over "caster_rear_right_fixed_link"
+                        {
+                            over "caster_rear_right_steering_link"
+                            {
+                                over "caster_rear_right_link"
+                                {
+                                }
+                            }
+                        }
+
+                        over "argo_drive_rear_fixed_link"
+                        {
+                            over "argo_drive_rear_steering_link"
+                            {
+                                over "argo_drive_rear_link"
+                                {
+                                }
+                            }
+                        }
+                    }
+
+                    over "imu_mounting_point"
+                    {
+                        over "imu_body_link"
+                        {
+                        }
+                    }
+
+                    over "front_mounting_point"
+                    {
+                        over "camera_front_bottom_screw_frame"
+                        {
+                            over "camera_front_link"
+                            {
+                            }
+                        }
+                    }
+
+                    over "rear_mounting_point"
+                    {
+                        over "camera_rear_bottom_screw_frame"
+                        {
+                            over "camera_rear_link"
+                            {
+                            }
+                        }
+                    }
+
+                    over "right_mounting_point"
+                    {
+                        over "camera_right_bottom_screw_frame"
+                        {
+                            over "camera_right_link"
+                            {
+                            }
+                        }
+                    }
+
+                    over "left_mounting_point"
+                    {
+                        over "camera_left_bottom_screw_frame"
+                        {
+                            over "camera_left_link"
+                            {
+                            }
+                        }
+                    }
+
+                    over "lidar_front_mounting_point"
+                    {
+                        over "lidar_front_base"
+                        {
+                            over "lidar_front"
+                            {
+                            }
+                        }
+                    }
+
+                    over "lidar_rear_mounting_point"
+                    {
+                        over "lidar_rear_base"
+                        {
+                            over "lidar_rear"
+                            {
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    def Camera "OverviewCamera" (
+        prepend apiSchemas = ["OmniRtxCameraAutoExposureAPI_1", "OmniRtxCameraExposureAPI_1"]
+    )
+    {
+        float exposure:fStop = 5
+        float exposure:responsivity = 1.1026709
+        float exposure:time = 0.02
+        double focalLength = 35
+        double horizontalAperture = 36
+        custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -4.157441405435236)
+        double verticalAperture = 20.25
+        float3 xformOp:rotateXYZ = (69.47489, -6.679165e-14, 35.49896)
+        float3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (7.816923140429507, -10.864370618450776, 5.597380301590099)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Xform "Environment"
+    {
+        def Xform "Floor"
+        {
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (10, 10, 0.5)
+            double3 xformOp:translate = (0, 0, -0.5)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+            def Cube "CollisionPlane" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </World/Looks/Floor>
+                rel material:binding:physics = </World/Looks/PhysicsFloor>
+                double size = 2
+                quatf xformOp:orient = (1, 0, 0, 0)
+                float3 xformOp:scale = (1, 1, 1)
+                double3 xformOp:translate = (0, 0, -0.0946273341345798)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+        }
+
+        def DistantLight "KeyLight"
+        {
+            color3f inputs:color = (1, 1, 1)
+            float inputs:intensity = 1500
+            float3 xformOp:rotateXYZ = (-45, 35, 0)
+            uniform token[] xformOpOrder = ["xformOp:rotateXYZ"]
+        }
+
+        def DomeLight "FillLight"
+        {
+            color3f inputs:color = (1, 1, 1)
+            float inputs:intensity = 250
+        }
+    }
+
+    def Xform "Targets"
+    {
+        def "table" (
+            prepend payload = @https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/6.0/Isaac/SimReady/Hospital/Room_and_Furniture/Desk_A01/payloads/base.usda@
+        )
+        {
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (1, 1, 1)
+            double3 xformOp:translate = (1, 0, -0.05)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "Geometry"
+            {
+                over "desk_01_obj_00"
+                {
+                    string isaac:nameOverride (
+                        displayName = "Name Override"
+                    )
+                    quatf xformOp:orient = (6.123234e-17, 0, 0, 1)
+                    float3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0.18006265532243781, -0.0978397654227941, 0.03645225015735476)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+                }
+            }
+        }
+    }
+
+    def Scope "Looks"
+    {
+        def Material "Floor"
+        {
+            token outputs:surface.connect = </World/Looks/Floor/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.55, 0.55, 0.55)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.4
+                token outputs:surface
+            }
+        }
+
+        def Material "PhysicsFloor" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.9
+            float physics:restitution = 0
+            float physics:staticFriction = 1
+        }
+
+        def Material "Red"
+        {
+            token outputs:surface.connect = </World/Looks/Red/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.85, 0.05, 0.05)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.4
+                token outputs:surface
+            }
+        }
+
+        def Material "Green"
+        {
+            token outputs:surface.connect = </World/Looks/Green/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.05, 0.75, 0.1)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.4
+                token outputs:surface
+            }
+        }
+
+        def Material "Blue"
+        {
+            token outputs:surface.connect = </World/Looks/Blue/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.05, 0.25, 0.9)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.4
+                token outputs:surface
+            }
+        }
+
+        def Material "Yellow"
+        {
+            token outputs:surface.connect = </World/Looks/Yellow/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.95, 0.85, 0.05)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.4
+                token outputs:surface
+            }
+        }
+
+        def Material "Magenta"
+        {
+            token outputs:surface.connect = </World/Looks/Magenta/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.85, 0.05, 0.85)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.4
+                token outputs:surface
+            }
+        }
+
+        def Material "White"
+        {
+            token outputs:surface.connect = </World/Looks/White/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.95, 0.95, 0.95)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.4
+                token outputs:surface
+            }
+        }
+
+        def Material "Black"
+        {
+            token outputs:surface.connect = </World/Looks/Black/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.05, 0.05, 0.05)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.4
+                token outputs:surface
+            }
+        }
+    }
+
+    def Camera "Camera" (
+        prepend apiSchemas = ["OmniRtxCameraAutoExposureAPI_1", "OmniRtxCameraExposureAPI_1"]
+    )
+    {
+    }
+
+    def OmniGraph "ActionGraph"
+    {
+        token evaluationMode = "Automatic"
+        token evaluator:type = "execution"
+        token fabricCacheBacking = "StageWithoutHistory"
+        int2 fileFormatVersion = (1, 9)
+        token pipelineStage = "pipelineStageSimulation"
+    }
+}
+
+def "Render" (
+    hide_in_stage_window = true
+    no_delete = true
+)
+{
+    def "OmniverseKit"
+    {
+        def "HydraTextures" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            def RenderProduct "omni_kit_widget_viewport_ViewportTexture_0" (
+                prepend apiSchemas = ["OmniRtxSettingsCommonAdvancedAPI_1", "OmniRtxSettingsRtAdvancedAPI_1", "OmniRtxSettingsPtAdvancedAPI_1", "OmniRtxPostColorGradingAPI_1", "OmniRtxPostChromaticAberrationAPI_1", "OmniRtxPostBloomPhysicalAPI_1", "OmniRtxPostMatteObjectAPI_1", "OmniRtxPostCompositingAPI_1", "OmniRtxPostDofAPI_1", "OmniRtxPostMotionBlurAPI_1", "OmniRtxPostTvNoiseAPI_1", "OmniRtxPostTonemapIrayReinhardAPI_1", "OmniRtxPostDebugSettingsAPI_1", "OmniRtxDebugSettingsAPI_1"]
+                hide_in_stage_window = true
+                no_delete = true
+            )
+            {
+                rel camera = </World/OverviewCamera>
+                token omni:rtx:ambientOcclusion:denoiserMode = "none"
+                token omni:rtx:background:source:texture:textureMode = "repeatMirrored"
+                token omni:rtx:background:source:type = "domeLight"
+                bool omni:rtx:debug:view:pixelDebug:enableFixedTextPos = 1
+                token omni:rtx:directLighting:sampledLighting:denoisingTechnique = "None"
+                bool omni:rtx:dlss:frameGeneration = 0
+                float3 omni:rtx:domeLight:rotationAxis = (0, 0, 1)
+                bool omni:rtx:indirectDiffuse:denoiser:enabled = 0
+                bool omni:rtx:material:db:syncLoads = 1
+                token omni:rtx:post:dlss:execMode = "performance"
+                bool omni:rtx:post:registeredCompositing:invertColorCorrection = 1
+                bool omni:rtx:post:registeredCompositing:invertToneMap = 1
+                bool omni:rtx:pt:adaptiveSampling:filterError = 0
+                uint omni:rtx:pt:adaptiveSampling:fixedSppIterations = 2
+                uint omni:rtx:pt:maxSamplesPerLaunch = 2073600
+                uint omni:rtx:pt:mgpu:maxPixelsPerRegionExponent = 12
+                bool omni:rtx:reflections:denoiser:enabled = 0
+                token omni:rtx:rendermode = "RealTimePathTracing"
+                color3f omni:rtx:rt:ambientLight:color = (0.1, 0.1, 0.1)
+                bool omni:rtx:rt:demoire = 0
+                bool omni:rtx:rt:ecoMode:enabled
+                bool omni:rtx:rt:lightcache:spatialCache:dontResolveConflicts = 1
+                int omni:rtx:rt:sss:samples = 1
+                uint omni:rtx:rtpt:maxVolumeBounces = 15
+                float omni:rtx:rtpt:modulatingRoughnessThreshold = 0.08
+                bool omni:rtx:scene:hydra:materialSyncLoads = 1
+                bool omni:rtx:scene:hydra:mdlMaterialWarmup = 1
+                bool omni:rtx:scene:useViewLightingMode
+                rel orderedVars = </Render/Vars/LdrColor>
+                custom bool overrideClipRange = 0
+                uniform int2 resolution = (1280, 720)
+            }
+        }
+    }
+
+    def RenderSettings "OmniverseGlobalRenderSettings" (
+        prepend apiSchemas = ["OmniRtxSettingsGlobalRtAdvancedAPI_1", "OmniRtxSettingsGlobalPtAdvancedAPI_1"]
+        no_delete = true
+    )
+    {
+        rel products = </Render/OmniverseKit/HydraTextures/omni_kit_widget_viewport_ViewportTexture_0>
+    }
+
+    def "Vars"
+    {
+        def RenderVar "LdrColor" (
+            hide_in_stage_window = true
+            no_delete = true
+        )
+        {
+            uniform string sourceName = "LdrColor"
+            uniform token sourceType = "raw"
+        }
+    }
+}
+
+over "OmniverseKit_Front" (
+    prepend apiSchemas = ["OmniRtxCameraAutoExposureAPI_1", "OmniRtxCameraExposureAPI_1"]
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (1, 10000000)
+    float exposure:fStop = 5
+    float exposure:responsivity = 1.1026709
+    float exposure:time = 0.02
+    float horizontalAperture = 82.811844
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -5)
+    token projection = "orthographic"
+    float verticalAperture = 82.811844
+    float3 xformOp:rotateXYZ = (90, -1.2722219e-14, 90)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (5, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+over "OmniverseKit_Top" (
+    prepend apiSchemas = ["OmniRtxCameraAutoExposureAPI_1", "OmniRtxCameraExposureAPI_1"]
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (1, 10000000)
+    float exposure:fStop = 5
+    float exposure:responsivity = 1.1026709
+    float exposure:time = 0.02
+    float horizontalAperture = 50
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -5)
+    token projection = "orthographic"
+    float verticalAperture = 50
+    float3 xformOp:rotateXYZ = (-1.2722219e-14, -7.016709e-15, -90)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 5)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+over "OmniverseKit_Right" (
+    prepend apiSchemas = ["OmniRtxCameraAutoExposureAPI_1", "OmniRtxCameraExposureAPI_1"]
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (1, 10000000)
+    float exposure:fStop = 5
+    float exposure:responsivity = 1.1026709
+    float exposure:time = 0.02
+    float horizontalAperture = 50
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -5)
+    token projection = "orthographic"
+    float verticalAperture = 50
+    float3 xformOp:rotateXYZ = (90, -1.41245e-30, 1.2722219e-14)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, -5, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+
+over "OmniverseKit_Persp" (
+    customData = {
+        dictionary omni = {
+            dictionary kit = {
+                bool hide_in_stage_window = 1
+                bool no_delete = 1
+            }
+        }
+    }
+    hide_in_stage_window = true
+    kind = "component"
+    no_delete = true
+)
+{
+    float2 clippingRange = (0.01, 10000000)
+    float focalLength = 18.147562
+    float focusDistance = 400
+    custom uniform vector3d omni:kit:centerOfInterest = (0, 0, -8.660254037844386)
+    float3 xformOp:rotateXYZ = (54.73561, -6.3611094e-15, 135)
+    float3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (5, 5, 5)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+}
+

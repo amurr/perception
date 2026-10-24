@@ -1,0 +1,282 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    metersPerUnit = 1
+    upAxis = "Z"
+    doc = """Mobile sensor-test world with collision floor, neutral lighting,
+ colored camera/lidar targets, and a relative robot reference.
+ Visual/geometric targets only; not a sensor-output proof."""
+)
+
+def Xform "World"
+{
+    def PhysicsScene "physicsScene"
+    {
+        vector3f physics:gravityDirection = (0, 0, -1)
+        float physics:gravityMagnitude = 9.81
+    }
+
+    def Xform "Robot" (
+        prepend references = @../mobile_fr3_duo_with_vision_and_manipulation_kit.usda@
+    )
+    {
+        double3 xformOp:translate = (0, 0, 0.05)
+        float3 xformOp:rotateXYZ = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+    }
+
+    def Camera "OverviewCamera"
+    {
+        double focalLength = 35
+        double horizontalAperture = 36
+        double verticalAperture = 20.25
+        double3 xformOp:translate = (7, -9, 6)
+        float3 xformOp:rotateXYZ = (61, 0, 38)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+    }
+
+    def Xform "Environment"
+    {
+        def Xform "Floor"
+        {
+            double3 xformOp:translate = (0, 0, -0.5)
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (10, 10, 0.5)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+            def Cube "CollisionPlane" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                double size = 2
+                rel material:binding = </World/Looks/Floor>
+                rel material:binding:physics = </World/Looks/PhysicsFloor>
+            }
+        }
+
+        def DistantLight "KeyLight"
+        {
+            float inputs:intensity = 1500
+            color3f inputs:color = (1, 1, 1)
+            float3 xformOp:rotateXYZ = (-45, 35, 0)
+            uniform token[] xformOpOrder = ["xformOp:rotateXYZ"]
+        }
+
+        def DomeLight "FillLight"
+        {
+            float inputs:intensity = 250
+            color3f inputs:color = (1, 1, 1)
+        }
+    }
+
+    def Xform "Targets"
+    {
+        def Xform "FarMagentaCylinder"
+        {
+            double3 xformOp:translate = (5.5, 0, 0.5)
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+            def Cylinder "Geom" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                double radius = 0.3
+                double height = 1
+                uniform token axis = "Z"
+                rel material:binding = </World/Looks/Magenta>
+            }
+        }
+        def Xform "FrontWallWhite"
+        {
+            double3 xformOp:translate = (4, 0, 0.75)
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            float3 xformOp:scale = (0.1, 1.5, 0.75)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+            def Cube "Geom" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                double size = 2
+                rel material:binding = </World/Looks/White>
+            }
+        }
+        def Xform "LeftOffsetBlue"
+        {
+            double3 xformOp:translate = (3.2, 1.8, 0.35)
+            float3 xformOp:rotateXYZ = (0, 0, 20)
+            float3 xformOp:scale = (0.25, 0.25, 0.35)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+            def Cube "Geom" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                double size = 2
+                rel material:binding = </World/Looks/Blue>
+            }
+        }
+        def Xform "LeftPillarRed"
+        {
+            double3 xformOp:translate = (2.5, 2.5, 0.6)
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+            def Cylinder "Geom" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                double radius = 0.2
+                double height = 1.2
+                uniform token axis = "Z"
+                rel material:binding = </World/Looks/Red>
+            }
+        }
+        def Xform "RightOffsetYellow"
+        {
+            double3 xformOp:translate = (3.2, -1.8, 0.35)
+            float3 xformOp:rotateXYZ = (0, 0, -20)
+            float3 xformOp:scale = (0.25, 0.25, 0.35)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+            def Cube "Geom" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                double size = 2
+                rel material:binding = </World/Looks/Yellow>
+            }
+        }
+        def Xform "RightPillarGreen"
+        {
+            double3 xformOp:translate = (2.5, -2.5, 0.6)
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+            def Cylinder "Geom" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                double radius = 0.2
+                double height = 1.2
+                uniform token axis = "Z"
+                rel material:binding = </World/Looks/Green>
+            }
+        }
+        def Xform "SideBlackSphere"
+        {
+            double3 xformOp:translate = (1.5, 3.5, 0.35)
+            float3 xformOp:rotateXYZ = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+            def Sphere "Geom" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                double radius = 0.35
+                rel material:binding = </World/Looks/Black>
+            }
+        }
+    }
+
+    def Scope "Looks"
+    {
+    def Material "Floor"
+    {
+        token outputs:surface.connect = </World/Looks/Floor/PreviewSurface.outputs:surface>
+        def Shader "PreviewSurface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (0.55, 0.55, 0.55)
+            float inputs:roughness = 0.4
+            float inputs:metallic = 0.0
+            token outputs:surface
+        }
+    }
+    def Material "PhysicsFloor" (
+        prepend apiSchemas = ["PhysicsMaterialAPI"]
+    )
+    {
+        float physics:staticFriction = 1
+        float physics:dynamicFriction = 0.9
+        float physics:restitution = 0
+    }
+    def Material "Red"
+    {
+        token outputs:surface.connect = </World/Looks/Red/PreviewSurface.outputs:surface>
+        def Shader "PreviewSurface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (0.85, 0.05, 0.05)
+            float inputs:roughness = 0.4
+            float inputs:metallic = 0.0
+            token outputs:surface
+        }
+    }
+    def Material "Green"
+    {
+        token outputs:surface.connect = </World/Looks/Green/PreviewSurface.outputs:surface>
+        def Shader "PreviewSurface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (0.05, 0.75, 0.1)
+            float inputs:roughness = 0.4
+            float inputs:metallic = 0.0
+            token outputs:surface
+        }
+    }
+    def Material "Blue"
+    {
+        token outputs:surface.connect = </World/Looks/Blue/PreviewSurface.outputs:surface>
+        def Shader "PreviewSurface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (0.05, 0.25, 0.9)
+            float inputs:roughness = 0.4
+            float inputs:metallic = 0.0
+            token outputs:surface
+        }
+    }
+    def Material "Yellow"
+    {
+        token outputs:surface.connect = </World/Looks/Yellow/PreviewSurface.outputs:surface>
+        def Shader "PreviewSurface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (0.95, 0.85, 0.05)
+            float inputs:roughness = 0.4
+            float inputs:metallic = 0.0
+            token outputs:surface
+        }
+    }
+    def Material "Magenta"
+    {
+        token outputs:surface.connect = </World/Looks/Magenta/PreviewSurface.outputs:surface>
+        def Shader "PreviewSurface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (0.85, 0.05, 0.85)
+            float inputs:roughness = 0.4
+            float inputs:metallic = 0.0
+            token outputs:surface
+        }
+    }
+    def Material "White"
+    {
+        token outputs:surface.connect = </World/Looks/White/PreviewSurface.outputs:surface>
+        def Shader "PreviewSurface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (0.95, 0.95, 0.95)
+            float inputs:roughness = 0.4
+            float inputs:metallic = 0.0
+            token outputs:surface
+        }
+    }
+    def Material "Black"
+    {
+        token outputs:surface.connect = </World/Looks/Black/PreviewSurface.outputs:surface>
+        def Shader "PreviewSurface"
+        {
+            uniform token info:id = "UsdPreviewSurface"
+            color3f inputs:diffuseColor = (0.05, 0.05, 0.05)
+            float inputs:roughness = 0.4
+            float inputs:metallic = 0.0
+            token outputs:surface
+        }
+    }
+    }
+}

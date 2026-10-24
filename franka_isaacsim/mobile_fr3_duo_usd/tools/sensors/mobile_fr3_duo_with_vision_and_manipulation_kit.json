@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "profile_name": "mobile_fr3_duo_with_vision_and_manipulation_kit",
+  "model_name": "mobile_fr3_duo_with_vision_and_manipulation_kit",
+  "calibration_policy": "synthetic_simulation",
+  "notes": "Full-stack mobile FR3 Duo with vision/manipulation kit plus TMR sensor suite. Device list is the union of the stationary vision-kit and mobile-sensor profiles.",
+  "includes": [
+    "franka_vision_and_manipulation_kit",
+    "franka_mobile_sensors"
+  ],
+  "devices": []
+}

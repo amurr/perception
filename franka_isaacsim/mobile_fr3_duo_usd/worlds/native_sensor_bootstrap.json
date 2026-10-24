@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "model_name": "mobile_fr3_duo_with_vision_and_manipulation_kit",
+  "profile_name": "mobile_fr3_duo_with_vision_and_manipulation_kit",
+  "entrypoint_relative": "worlds/sensorized_world.usda",
+  "robot_reference_prim": "/World/Robot",
+  "native_sensor_child_name": "NativeSensor",
+  "calibration_policy": "synthetic_simulation",
+  "expected_device_count": 18,
+  "expected_by_class": {
+    "camera": 15,
+    "lidar_2d": 2,
+    "imu": 1
+  },
+  "devices": [
+    {
+      "logical_name": "head_zed_left_rgb",
+      "device_class": "stereo_rgb_camera",
+      "frame_name_suffix": "head_left_camera_frame_optical",
+      "outputs": [
+        "rgb"
+      ]
+    },
+    {
+      "logical_name": "head_zed_right_rgb",
+      "device_class": "stereo_rgb_camera",
+      "frame_name_suffix": "head_right_camera_frame_optical",
+      "outputs": [
+        "rgb"
+      ]
+    },
+    {
+      "logical_name": "head_zed_depth",
+      "device_class": "depth_camera",
+      "frame_name_suffix": "head_left_camera_frame_optical",
+      "outputs": [
+        "depth"
+      ]
+    },
+    {
+      "logical_name": "left_wrist_d405_rgb",
+      "device_class": "rgb_depth_camera",
+      "frame_name_suffix": "left__wrist_camera_color_optical_frame",
+      "outputs": [
+        "rgb"
+      ]
+    },
+    {
+      "logical_name": "left_wrist_d405_depth",
+      "device_class": "rgb_depth_camera",
+      "frame_name_suffix": "left__wrist_camera_depth_optical_frame",
+      "outputs": [
+        "depth"
+      ]
+    },
+    {
+      "logical_name": "right_wrist_d405_rgb",
+      "device_class": "rgb_depth_camera",
+      "frame_name_suffix": "right__wrist_camera_color_optical_frame",
+      "outputs": [
+        "rgb"
+      ]
+    },
+    {
+      "logical_name": "right_wrist_d405_depth",
+      "device_class": "rgb_depth_camera",
+      "frame_name_suffix": "right__wrist_camera_depth_optical_frame",
+      "outputs": [
+        "depth"
+      ]
+    },
+    {
+      "logical_name": "camera_front_d455_rgb",
+      "device_class": "rgb_depth_camera",
+      "frame_name_suffix": "camera_front_color_optical_frame",
+      "outputs": [
+        "rgb"
+      ]
+    },
+    {
+      "logical_name": "camera_front_d455_depth",
+      "device_class": "rgb_depth_camera",
+      "frame_name_suffix": "camera_front_depth_optical_frame",
+      "outputs": [
+        "depth"
+      ]
+    },
+    {
+      "logical_name": "camera_rear_d455_rgb",
+      "device_class": "rgb_depth_camera",
+      "frame_name_suffix": "camera_rear_color_optical_frame",
+      "outputs": [
+        "rgb"
+      ]
+    },
+    {
+      "logical_name": "camera_rear_d455_depth",
+      "device_class": "rgb_depth_camera",
+      "frame_name_suffix": "camera_rear_depth_optical_frame",
+      "outputs": [
+        "depth"
+      ]
+    },
+    {
+      "logical_name": "camera_left_d455_rgb",
+      "device_class": "rgb_depth_camera",
+      "frame_name_suffix": "camera_left_color_optical_frame",
+      "outputs": [
+        "rgb"
+      ]
+    },
+    {
+      "logical_name": "camera_left_d455_depth",
+      "device_class": "rgb_depth_camera",
+      "frame_name_suffix": "camera_left_depth_optical_frame",
+      "outputs": [
+        "depth"
+      ]
+    },
+    {
+      "logical_name": "camera_right_d455_rgb",
+      "device_class": "rgb_depth_camera",
+      "frame_name_suffix": "camera_right_color_optical_frame",
+      "outputs": [
+        "rgb"
+      ]
+    },
+    {
+      "logical_name": "camera_right_d455_depth",
+      "device_class": "rgb_depth_camera",
+      "frame_name_suffix": "camera_right_depth_optical_frame",
+      "outputs": [
+        "depth"
+      ]
+    },
+    {
+      "logical_name": "lidar_front_sick",
+      "device_class": "lidar_2d",
+      "frame_name_suffix": "lidar_front",
+      "outputs": [
+        "range_scan",
+        "point_cloud"
+      ]
+    },
+    {
+      "logical_name": "lidar_rear_sick",
+      "device_class": "lidar_2d",
+      "frame_name_suffix": "lidar_rear",
+      "outputs": [
+        "range_scan",
+        "point_cloud"
+      ]
+    },
+    {
+      "logical_name": "olv_imu",
+      "device_class": "imu",
+      "frame_name_suffix": "imu_body_link",
+      "outputs": [
+        "linear_acceleration",
+        "angular_velocity"
+      ]
+    }
+  ],
+  "invocation": {
+    "script": "bootstrap_native_sensors.py",
+    "notes": "Open worlds/sensorized_world.usda (or pass --usd), then run isaacsim6/bin/run_isaac_script.sh bootstrap_native_sensors.py --model <model> to attach Camera/OmniLidar/IsaacImuSensor children. Geometry-only frames are never counted as active sensors."
+  }
+}

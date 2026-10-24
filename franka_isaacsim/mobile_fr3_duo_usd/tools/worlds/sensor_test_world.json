@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "world_name": "sensor_test_world",
+  "gravity_m_s2": [0.0, 0.0, -9.81],
+  "floor": {
+    "size_m": 20.0,
+    "thickness_m": 1.0,
+    "static_friction": 1.0,
+    "dynamic_friction": 0.9,
+    "restitution": 0.0,
+    "color_rgb": [0.55, 0.55, 0.55]
+  },
+  "lighting": {
+    "key_intensity": 1500.0,
+    "key_color_rgb": [1.0, 1.0, 1.0],
+    "key_rotate_xyz_deg": [-45.0, 35.0, 0.0],
+    "dome_intensity": 250.0,
+    "dome_color_rgb": [1.0, 1.0, 1.0]
+  },
+  "robot_spawn": {
+    "translation_m": [0.0, 0.0, 0.05],
+    "rotate_xyz_deg": [0.0, 0.0, 0.0]
+  },
+  "materials": {
+    "red": [0.85, 0.05, 0.05],
+    "green": [0.05, 0.75, 0.10],
+    "blue": [0.05, 0.25, 0.90],
+    "yellow": [0.95, 0.85, 0.05],
+    "magenta": [0.85, 0.05, 0.85],
+    "white": [0.95, 0.95, 0.95],
+    "black": [0.05, 0.05, 0.05]
+  },
+  "clear_corridor": {
+    "x_min_m": -1.0,
+    "x_max_m": 1.2,
+    "y_min_m": -1.0,
+    "y_max_m": 1.0,
+    "description": "Immediate spawn and short forward/reverse corridor kept free of solid targets."
+  },
+  "targets": [
+    {
+      "name": "FrontWallWhite",
+      "shape": "box",
+      "purpose": ["lidar", "camera"],
+      "color": "white",
+      "translation_m": [4.0, 0.0, 0.75],
+      "rotate_xyz_deg": [0.0, 0.0, 0.0],
+      "dimensions_m": { "x": 0.20, "y": 3.00, "z": 1.50 },
+      "collision": true
+    },
+    {
+      "name": "LeftPillarRed",
+      "shape": "cylinder",
+      "purpose": ["camera", "lidar"],
+      "color": "red",
+      "translation_m": [2.5, 2.5, 0.60],
+      "rotate_xyz_deg": [0.0, 0.0, 0.0],
+      "dimensions_m": { "x": 0.40, "y": 0.40, "z": 1.20 },
+      "collision": true
+    },
+    {
+      "name": "RightPillarGreen",
+      "shape": "cylinder",
+      "purpose": ["camera", "lidar"],
+      "color": "green",
+      "translation_m": [2.5, -2.5, 0.60],
+      "rotate_xyz_deg": [0.0, 0.0, 0.0],
+      "dimensions_m": { "x": 0.40, "y": 0.40, "z": 1.20 },
+      "collision": true
+    },
+    {
+      "name": "LeftOffsetBlue",
+      "shape": "box",
+      "purpose": ["lidar", "camera"],
+      "color": "blue",
+      "translation_m": [3.2, 1.8, 0.35],
+      "rotate_xyz_deg": [0.0, 0.0, 20.0],
+      "dimensions_m": { "x": 0.50, "y": 0.50, "z": 0.70 },
+      "collision": true
+    },
+    {
+      "name": "RightOffsetYellow",
+      "shape": "box",
+      "purpose": ["lidar", "camera"],
+      "color": "yellow",
+      "translation_m": [3.2, -1.8, 0.35],
+      "rotate_xyz_deg": [0.0, 0.0, -20.0],
+      "dimensions_m": { "x": 0.50, "y": 0.50, "z": 0.70 },
+      "collision": true
+    },
+    {
+      "name": "FarMagentaCylinder",
+      "shape": "cylinder",
+      "purpose": ["lidar"],
+      "color": "magenta",
+      "translation_m": [5.5, 0.0, 0.50],
+      "rotate_xyz_deg": [0.0, 0.0, 0.0],
+      "dimensions_m": { "x": 0.60, "y": 0.60, "z": 1.00 },
+      "collision": true
+    },
+    {
+      "name": "SideBlackSphere",
+      "shape": "sphere",
+      "purpose": ["camera", "lidar"],
+      "color": "black",
+      "translation_m": [1.5, 3.5, 0.35],
+      "rotate_xyz_deg": [0.0, 0.0, 0.0],
+      "dimensions_m": { "x": 0.70, "y": 0.70, "z": 0.70 },
+      "collision": true
+    }
+  ]
+}

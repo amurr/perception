@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "profile_name": "franka_vision_and_manipulation_kit",
+  "model_name": "franka_vision_and_manipulation_kit",
+  "calibration_policy": "synthetic_simulation",
+  "notes": "Stationary vision kit: ZED Mini stereo RGB/depth plus left/right wrist D405 RGB/depth. Intrinsics are synthetic simulation values, not hardware calibration.",
+  "devices": [
+    {
+      "logical_name": "head_zed_left_rgb",
+      "device_class": "stereo_rgb_camera",
+      "hardware_model": "zed_mini",
+      "role": "head_left",
+      "frame_name_suffix": "head_left_camera_frame_optical",
+      "outputs": ["rgb"],
+      "native_contract": {
+        "backend": "isaac_sim_native",
+        "topic_bridge": "none"
+      },
+      "simulation_calibration": {
+        "source": "synthetic_simulation",
+        "resolution_hw": [720, 1280],
+        "focal_length_px": [700.0, 700.0],
+        "principal_point_px": [640.0, 360.0],
+        "baseline_m": 0.063,
+        "notes": "Synthetic ZED Mini left eye; baseline shared with right eye."
+      }
+    },
+    {
+      "logical_name": "head_zed_right_rgb",
+      "device_class": "stereo_rgb_camera",
+      "hardware_model": "zed_mini",
+      "role": "head_right",
+      "frame_name_suffix": "head_right_camera_frame_optical",
+      "outputs": ["rgb"],
+      "native_contract": {
+        "backend": "isaac_sim_native",
+        "topic_bridge": "none"
+      },
+      "simulation_calibration": {
+        "source": "synthetic_simulation",
+        "resolution_hw": [720, 1280],
+        "focal_length_px": [700.0, 700.0],
+        "principal_point_px": [640.0, 360.0],
+        "baseline_m": 0.063,
+        "notes": "Synthetic ZED Mini right eye."
+      }
+    },
+    {
+      "logical_name": "head_zed_depth",
+      "device_class": "depth_camera",
+      "hardware_model": "zed_mini",
+      "role": "head_depth",
+      "frame_name_suffix": "head_left_camera_frame_optical",
+      "outputs": ["depth"],
+      "native_contract": {
+        "backend": "isaac_sim_native",
+        "topic_bridge": "none",
+        "notes": "Stereo depth shares the left optical frame; head_camera_center is a mount frame and yields zero finite distance_to_image_plane under the ROS-optical→USD Camera local rotation."
+      },
+      "simulation_calibration": {
+        "source": "synthetic_simulation",
+        "resolution_hw": [720, 1280],
+        "focal_length_px": [700.0, 700.0],
+        "principal_point_px": [640.0, 360.0],
+        "depth_noise_std_m": 0.01,
+        "min_range_m": 0.1,
+        "max_range_m": 10.0
+      }
+    },
+    {
+      "logical_name": "left_wrist_d405_rgb",
+      "device_class": "rgb_depth_camera",
+      "hardware_model": "realsense_d405",
+      "role": "left_wrist_rgb",
+      "frame_name_suffix": "left__wrist_camera_color_optical_frame",
+      "outputs": ["rgb"],
+      "native_contract": {
+        "backend": "isaac_sim_native",
+        "topic_bridge": "none"
+      },
+      "simulation_calibration": {
+        "source": "synthetic_simulation",
+        "resolution_hw": [480, 848],
+        "focal_length_px": [430.0, 430.0],
+        "principal_point_px": [424.0, 240.0]
+      }
+    },
+    {
+      "logical_name": "left_wrist_d405_depth",
+      "device_class": "rgb_depth_camera",
+      "hardware_model": "realsense_d405",
+      "role": "left_wrist_depth",
+      "frame_name_suffix": "left__wrist_camera_depth_optical_frame",
+      "outputs": ["depth"],
+      "native_contract": {
+        "backend": "isaac_sim_native",
+        "topic_bridge": "none"
+      },
+      "simulation_calibration": {
+        "source": "synthetic_simulation",
+        "resolution_hw": [480, 848],
+        "focal_length_px": [430.0, 430.0],
+        "principal_point_px": [424.0, 240.0],
+        "depth_noise_std_m": 0.005,
+        "min_range_m": 0.07,
+        "max_range_m": 0.5
+      }
+    },
+    {
+      "logical_name": "right_wrist_d405_rgb",
+      "device_class": "rgb_depth_camera",
+      "hardware_model": "realsense_d405",
+      "role": "right_wrist_rgb",
+      "frame_name_suffix": "right__wrist_camera_color_optical_frame",
+      "outputs": ["rgb"],
+      "native_contract": {
+        "backend": "isaac_sim_native",
+        "topic_bridge": "none"
+      },
+      "simulation_calibration": {
+        "source": "synthetic_simulation",
+        "resolution_hw": [480, 848],
+        "focal_length_px": [430.0, 430.0],
+        "principal_point_px": [424.0, 240.0]
+      }
+    },
+    {
+      "logical_name": "right_wrist_d405_depth",
+      "device_class": "rgb_depth_camera",
+      "hardware_model": "realsense_d405",
+      "role": "right_wrist_depth",
+      "frame_name_suffix": "right__wrist_camera_depth_optical_frame",
+      "outputs": ["depth"],
+      "native_contract": {
+        "backend": "isaac_sim_native",
+        "topic_bridge": "none"
+      },
+      "simulation_calibration": {
+        "source": "synthetic_simulation",
+        "resolution_hw": [480, 848],
+        "focal_length_px": [430.0, 430.0],
+        "principal_point_px": [424.0, 240.0],
+        "depth_noise_std_m": 0.005,
+        "min_range_m": 0.07,
+        "max_range_m": 0.5
+      }
+    }
+  ]
+}

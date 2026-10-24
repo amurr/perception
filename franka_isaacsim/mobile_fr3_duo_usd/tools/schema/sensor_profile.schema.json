@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "isaacsim6-sensor-profile",
+  "title": "Isaac Sim 6 native sensor profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "profile_name",
+    "model_name",
+    "calibration_policy",
+    "devices"
+  ],
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "profile_name": { "type": "string", "minLength": 1 },
+    "model_name": { "type": "string", "minLength": 1 },
+    "calibration_policy": {
+      "type": "string",
+      "enum": ["synthetic_simulation", "hardware"]
+    },
+    "notes": { "type": "string" },
+    "includes": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "devices": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/device" }
+    }
+  },
+  "$defs": {
+    "device": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "logical_name",
+        "device_class",
+        "hardware_model",
+        "role",
+        "frame_name_suffix",
+        "outputs",
+        "native_contract"
+      ],
+      "properties": {
+        "logical_name": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "device_class": {
+          "type": "string",
+          "enum": [
+            "stereo_rgb_camera",
+            "rgb_camera",
+            "depth_camera",
+            "rgb_depth_camera",
+            "lidar_2d",
+            "imu"
+          ]
+        },
+        "hardware_model": { "type": "string", "minLength": 1 },
+        "role": { "type": "string", "minLength": 1 },
+        "frame_name_suffix": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Exact suffix of a generated URDF link name used for robust frame discovery."
+        },
+        "outputs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "rgb",
+              "depth",
+              "point_cloud",
+              "range_scan",
+              "linear_acceleration",
+              "angular_velocity"
+            ]
+          }
+        },
+        "native_contract": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["backend", "topic_bridge"],
+          "properties": {
+            "backend": {
+              "type": "string",
+              "enum": ["isaac_sim_native"]
+            },
+            "topic_bridge": {
+              "type": "string",
+              "enum": ["none"]
+            },
+            "notes": { "type": "string" }
+          }
+        },
+        "simulation_calibration": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "source": {
+              "type": "string",
+              "enum": ["synthetic_simulation"]
+            },
+            "resolution_hw": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": { "type": "integer", "minimum": 1 }
+            },
+            "focal_length_px": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": { "type": "number", "exclusiveMinimum": 0 }
+            },
+            "principal_point_px": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": { "type": "number" }
+            },
+            "baseline_m": { "type": "number", "exclusiveMinimum": 0 },
+            "horizontal_fov_deg": { "type": "number", "exclusiveMinimum": 0, "maximum": 360 },
+            "max_range_m": { "type": "number", "exclusiveMinimum": 0 },
+            "min_range_m": { "type": "number", "minimum": 0 },
+            "scan_frequency_hz": { "type": "number", "exclusiveMinimum": 0 },
+            "sample_rate_hz": { "type": "number", "exclusiveMinimum": 0 },
+            "depth_noise_std_m": { "type": "number", "minimum": 0 },
+            "range_noise_std_m": { "type": "number", "minimum": 0 },
+            "accel_noise_std_m_s2": { "type": "number", "minimum": 0 },
+            "gyro_noise_std_rad_s": { "type": "number", "minimum": 0 },
+            "notes": { "type": "string" }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "device_class": {
+                "enum": [
+                  "stereo_rgb_camera",
+                  "rgb_camera",
+                  "depth_camera",
+                  "rgb_depth_camera",
+                  "lidar_2d",
+                  "imu"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": ["simulation_calibration"],
+            "properties": {
+              "simulation_calibration": {
+                "required": ["source"]
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

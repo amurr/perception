@@ -1,0 +1,52 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "URDF USD Converter v0.1.2"
+    }
+    defaultPrim = "fr3_duo_with_vision_and_manipulation_kit"
+    doc = """Generated from Composed Stage of root layer /tmp/tmpto1l_cf7/fr3_duo_with_vision_and_manipulation_kit.usdc
+
+
+Generated from Composed Stage of root layer /tmp/urdf_import_mobile_fr3_duo_with_vision_and_manipulation_kit_jhey5z1e/usdex_mobile_fr3_duo_with_vision_and_manipulation_kit/fr3_duo_with_vision_and_manipulation_kit.usdc
+
+
+Generated from Composed Stage of root layer /tmp/urdf_import_mobile_fr3_duo_with_vision_and_manipulation_kit_jhey5z1e/temp_mobile_fr3_duo_with_vision_and_manipulation_kit/mobile_fr3_duo_with_vision_and_manipulation_kit.usd
+
+
+Generated from Composed Stage of root layer /home/franka/isaacsim6_artifacts/release-final-20260807/models/mobile_fr3_duo_with_vision_and_manipulation_kit/usd/mobile_fr3_duo_with_vision_and_manipulation_kit/payloads/base.usd
+"""
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "fr3_duo_with_vision_and_manipulation_kit" (
+    prepend references = @./payloads/base.usda@
+    variants = {
+        string Physics = "physx"
+    }
+    append variantSets = "Physics"
+)
+{
+    variantSet "Physics" = {
+        "mujoco" (
+            prepend payload = @./payloads/Physics/mujoco.usda@
+        ) {
+
+        }
+        "none" {
+
+        }
+        "physics" (
+            prepend payload = @./payloads/Physics/physics.usda@
+        ) {
+
+        }
+        "physx" (
+            prepend payload = @./payloads/Physics/physx.usda@
+        ) {
+
+        }
+    }
+}
+

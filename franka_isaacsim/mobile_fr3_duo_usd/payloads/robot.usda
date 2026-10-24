@@ -1,0 +1,1445 @@
+#usda 1.0
+(
+    customLayerData = {
+        string creator = "URDF USD Converter v0.1.2"
+    }
+    defaultPrim = "fr3_duo_with_vision_and_manipulation_kit"
+    doc = """Generated from Composed Stage of root layer /tmp/tmpto1l_cf7/fr3_duo_with_vision_and_manipulation_kit.usdc
+
+
+Generated from Composed Stage of root layer /tmp/urdf_import_mobile_fr3_duo_with_vision_and_manipulation_kit_jhey5z1e/usdex_mobile_fr3_duo_with_vision_and_manipulation_kit/fr3_duo_with_vision_and_manipulation_kit.usdc
+
+
+Generated from Composed Stage of root layer /tmp/urdf_import_mobile_fr3_duo_with_vision_and_manipulation_kit_jhey5z1e/temp_mobile_fr3_duo_with_vision_and_manipulation_kit/mobile_fr3_duo_with_vision_and_manipulation_kit.usd
+"""
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+over "fr3_duo_with_vision_and_manipulation_kit" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+)
+{
+    prepend rel isaac:physics:robotJoints = [
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/base_inertia_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/caster_front_left_fixed_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/argo_drive_front_fixed_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/rocker_arm_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/imu_mounting_point_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/front_mounting_point_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/rear_mounting_point_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_mounting_point_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_mounting_point_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/lidar_front_mounting_point_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/lidar_rear_mounting_point_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/franka_spine_fixed_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/caster_front_left_steering_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/caster_front_left_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/tmrv0_2_joint_0>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/tmrv0_2_joint_1>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/caster_rear_right_fixed_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/argo_drive_rear_fixed_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/caster_rear_right_steering_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/caster_rear_right_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/tmrv0_2_joint_2>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/tmrv0_2_joint_3>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/imu_body_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/camera_front_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/camera_front_link_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/camera_rear_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/camera_rear_link_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/camera_right_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/camera_right_link_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/camera_left_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/camera_left_link_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/lidar_front_base_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/lidar_front_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/lidar_rear_base_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/lidar_rear_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/franka_spine_vertical_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/mount_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/fr3_duo_mount_origin_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/head_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/fr3_duo_mount_left_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/fr3_duo_mount_right_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_base_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_fr3v2_1_left_base_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_fr3v2_1_joint1>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_fr3v2_1_joint2>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_fr3v2_1_joint3>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_fr3v2_1_joint4>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_fr3v2_1_joint5>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_fr3v2_1_joint6>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_fr3v2_1_joint7>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_fr3v2_1_joint8>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_ur_to_robotiq_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_gripper_side_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_robotiq_85_base_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_robotiq_85_left_knuckle_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_robotiq_85_right_knuckle_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_robotiq_85_left_inner_knuckle_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_robotiq_85_right_inner_knuckle_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left__wrist_camera_mount_base_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_robotiq_85_left_finger_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_robotiq_85_left_finger_tip_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_robotiq_85_right_finger_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left_robotiq_85_right_finger_tip_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left__wrist_camera_mount_attachment_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left__wrist_camera_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/left__wrist_camera_link_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_base_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_fr3v2_1_right_base_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_fr3v2_1_joint1>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_fr3v2_1_joint2>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_fr3v2_1_joint3>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_fr3v2_1_joint4>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_fr3v2_1_joint5>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_fr3v2_1_joint6>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_fr3v2_1_joint7>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_fr3v2_1_joint8>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_ur_to_robotiq_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_gripper_side_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_robotiq_85_base_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_robotiq_85_left_knuckle_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_robotiq_85_right_knuckle_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_robotiq_85_left_inner_knuckle_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_robotiq_85_right_inner_knuckle_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right__wrist_camera_mount_base_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_robotiq_85_left_finger_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_robotiq_85_left_finger_tip_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_robotiq_85_right_finger_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right_robotiq_85_right_finger_tip_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right__wrist_camera_mount_attachment_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right__wrist_camera_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/right__wrist_camera_link_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/head_camera_mounting_point_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/head_camera_mounting_joint>,
+        </fr3_duo_with_vision_and_manipulation_kit/Physics/head_camera_center_joint>,
+    ]
+    prepend rel isaac:physics:robotLinks = [
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/base_inertia>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/caster_front_left_fixed_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/caster_front_left_fixed_link/caster_front_left_steering_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/caster_front_left_fixed_link/caster_front_left_steering_link/caster_front_left_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/argo_drive_front_fixed_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/argo_drive_front_fixed_link/argo_drive_front_steering_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/argo_drive_front_fixed_link/argo_drive_front_steering_link/argo_drive_front_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/rocker_arm_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/rocker_arm_link/caster_rear_right_fixed_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/rocker_arm_link/caster_rear_right_fixed_link/caster_rear_right_steering_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/rocker_arm_link/caster_rear_right_fixed_link/caster_rear_right_steering_link/caster_rear_right_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/rocker_arm_link/argo_drive_rear_fixed_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/rocker_arm_link/argo_drive_rear_fixed_link/argo_drive_rear_steering_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/rocker_arm_link/argo_drive_rear_fixed_link/argo_drive_rear_steering_link/argo_drive_rear_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/imu_mounting_point>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/imu_mounting_point/imu_body_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/front_mounting_point>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/front_mounting_point/camera_front_bottom_screw_frame>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/front_mounting_point/camera_front_bottom_screw_frame/camera_front_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/rear_mounting_point>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/rear_mounting_point/camera_rear_bottom_screw_frame>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/rear_mounting_point/camera_rear_bottom_screw_frame/camera_rear_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/right_mounting_point>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/right_mounting_point/camera_right_bottom_screw_frame>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/right_mounting_point/camera_right_bottom_screw_frame/camera_right_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/left_mounting_point>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/left_mounting_point/camera_left_bottom_screw_frame>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/left_mounting_point/camera_left_bottom_screw_frame/camera_left_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/lidar_front_mounting_point>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/lidar_front_mounting_point/lidar_front_base>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/lidar_front_mounting_point/lidar_front_base/lidar_front>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/lidar_rear_mounting_point>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/lidar_rear_mounting_point/lidar_rear_base>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/lidar_rear_mounting_point/lidar_rear_base/lidar_rear>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2/left_fr3v2_1_link3>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2/left_fr3v2_1_link3/left_fr3v2_1_link4>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2/left_fr3v2_1_link3/left_fr3v2_1_link4/left_fr3v2_1_link5>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2/left_fr3v2_1_link3/left_fr3v2_1_link4/left_fr3v2_1_link5/left_fr3v2_1_link6>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2/left_fr3v2_1_link3/left_fr3v2_1_link4/left_fr3v2_1_link5/left_fr3v2_1_link6/left_fr3v2_1_link7>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2/left_fr3v2_1_link3/left_fr3v2_1_link4/left_fr3v2_1_link5/left_fr3v2_1_link6/left_fr3v2_1_link7/left_fr3v2_1_link8>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2/left_fr3v2_1_link3/left_fr3v2_1_link4/left_fr3v2_1_link5/left_fr3v2_1_link6/left_fr3v2_1_link7/left_fr3v2_1_link8/left_ur_to_robotiq_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2/left_fr3v2_1_link3/left_fr3v2_1_link4/left_fr3v2_1_link5/left_fr3v2_1_link6/left_fr3v2_1_link7/left_fr3v2_1_link8/left_ur_to_robotiq_link/left_gripper_mount_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2/left_fr3v2_1_link3/left_fr3v2_1_link4/left_fr3v2_1_link5/left_fr3v2_1_link6/left_fr3v2_1_link7/left_fr3v2_1_link8/left_ur_to_robotiq_link/left_gripper_mount_link/left_robotiq_85_base_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2/left_fr3v2_1_link3/left_fr3v2_1_link4/left_fr3v2_1_link5/left_fr3v2_1_link6/left_fr3v2_1_link7/left_fr3v2_1_link8/left_ur_to_robotiq_link/left_gripper_mount_link/left_robotiq_85_base_link/left_robotiq_85_left_knuckle_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2/left_fr3v2_1_link3/left_fr3v2_1_link4/left_fr3v2_1_link5/left_fr3v2_1_link6/left_fr3v2_1_link7/left_fr3v2_1_link8/left_ur_to_robotiq_link/left_gripper_mount_link/left_robotiq_85_base_link/left_robotiq_85_left_knuckle_link/left_robotiq_85_left_finger_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2/left_fr3v2_1_link3/left_fr3v2_1_link4/left_fr3v2_1_link5/left_fr3v2_1_link6/left_fr3v2_1_link7/left_fr3v2_1_link8/left_ur_to_robotiq_link/left_gripper_mount_link/left_robotiq_85_base_link/left_robotiq_85_left_knuckle_link/left_robotiq_85_left_finger_link/left_robotiq_85_left_finger_tip_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2/left_fr3v2_1_link3/left_fr3v2_1_link4/left_fr3v2_1_link5/left_fr3v2_1_link6/left_fr3v2_1_link7/left_fr3v2_1_link8/left_ur_to_robotiq_link/left_gripper_mount_link/left_robotiq_85_base_link/left_robotiq_85_right_knuckle_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2/left_fr3v2_1_link3/left_fr3v2_1_link4/left_fr3v2_1_link5/left_fr3v2_1_link6/left_fr3v2_1_link7/left_fr3v2_1_link8/left_ur_to_robotiq_link/left_gripper_mount_link/left_robotiq_85_base_link/left_robotiq_85_right_knuckle_link/left_robotiq_85_right_finger_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2/left_fr3v2_1_link3/left_fr3v2_1_link4/left_fr3v2_1_link5/left_fr3v2_1_link6/left_fr3v2_1_link7/left_fr3v2_1_link8/left_ur_to_robotiq_link/left_gripper_mount_link/left_robotiq_85_base_link/left_robotiq_85_right_knuckle_link/left_robotiq_85_right_finger_link/left_robotiq_85_right_finger_tip_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2/left_fr3v2_1_link3/left_fr3v2_1_link4/left_fr3v2_1_link5/left_fr3v2_1_link6/left_fr3v2_1_link7/left_fr3v2_1_link8/left_ur_to_robotiq_link/left_gripper_mount_link/left_robotiq_85_base_link/left_robotiq_85_left_inner_knuckle_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2/left_fr3v2_1_link3/left_fr3v2_1_link4/left_fr3v2_1_link5/left_fr3v2_1_link6/left_fr3v2_1_link7/left_fr3v2_1_link8/left_ur_to_robotiq_link/left_gripper_mount_link/left_robotiq_85_base_link/left_robotiq_85_right_inner_knuckle_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2/left_fr3v2_1_link3/left_fr3v2_1_link4/left_fr3v2_1_link5/left_fr3v2_1_link6/left_fr3v2_1_link7/left_fr3v2_1_link8/left_ur_to_robotiq_link/left_gripper_mount_link/left_robotiq_85_base_link/left__wrist_camera_mount_casing_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2/left_fr3v2_1_link3/left_fr3v2_1_link4/left_fr3v2_1_link5/left_fr3v2_1_link6/left_fr3v2_1_link7/left_fr3v2_1_link8/left_ur_to_robotiq_link/left_gripper_mount_link/left_robotiq_85_base_link/left__wrist_camera_mount_casing_link/left__wrist_camera_mount_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2/left_fr3v2_1_link3/left_fr3v2_1_link4/left_fr3v2_1_link5/left_fr3v2_1_link6/left_fr3v2_1_link7/left_fr3v2_1_link8/left_ur_to_robotiq_link/left_gripper_mount_link/left_robotiq_85_base_link/left__wrist_camera_mount_casing_link/left__wrist_camera_mount_link/left__wrist_camera_bottom_screw_frame>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_left/left_base/left_fr3v2_1_link0/left_fr3v2_1_link1/left_fr3v2_1_link2/left_fr3v2_1_link3/left_fr3v2_1_link4/left_fr3v2_1_link5/left_fr3v2_1_link6/left_fr3v2_1_link7/left_fr3v2_1_link8/left_ur_to_robotiq_link/left_gripper_mount_link/left_robotiq_85_base_link/left__wrist_camera_mount_casing_link/left__wrist_camera_mount_link/left__wrist_camera_bottom_screw_frame/left__wrist_camera_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2/right_fr3v2_1_link3>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2/right_fr3v2_1_link3/right_fr3v2_1_link4>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2/right_fr3v2_1_link3/right_fr3v2_1_link4/right_fr3v2_1_link5>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2/right_fr3v2_1_link3/right_fr3v2_1_link4/right_fr3v2_1_link5/right_fr3v2_1_link6>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2/right_fr3v2_1_link3/right_fr3v2_1_link4/right_fr3v2_1_link5/right_fr3v2_1_link6/right_fr3v2_1_link7>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2/right_fr3v2_1_link3/right_fr3v2_1_link4/right_fr3v2_1_link5/right_fr3v2_1_link6/right_fr3v2_1_link7/right_fr3v2_1_link8>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2/right_fr3v2_1_link3/right_fr3v2_1_link4/right_fr3v2_1_link5/right_fr3v2_1_link6/right_fr3v2_1_link7/right_fr3v2_1_link8/right_ur_to_robotiq_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2/right_fr3v2_1_link3/right_fr3v2_1_link4/right_fr3v2_1_link5/right_fr3v2_1_link6/right_fr3v2_1_link7/right_fr3v2_1_link8/right_ur_to_robotiq_link/right_gripper_mount_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2/right_fr3v2_1_link3/right_fr3v2_1_link4/right_fr3v2_1_link5/right_fr3v2_1_link6/right_fr3v2_1_link7/right_fr3v2_1_link8/right_ur_to_robotiq_link/right_gripper_mount_link/right_robotiq_85_base_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2/right_fr3v2_1_link3/right_fr3v2_1_link4/right_fr3v2_1_link5/right_fr3v2_1_link6/right_fr3v2_1_link7/right_fr3v2_1_link8/right_ur_to_robotiq_link/right_gripper_mount_link/right_robotiq_85_base_link/right_robotiq_85_left_knuckle_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2/right_fr3v2_1_link3/right_fr3v2_1_link4/right_fr3v2_1_link5/right_fr3v2_1_link6/right_fr3v2_1_link7/right_fr3v2_1_link8/right_ur_to_robotiq_link/right_gripper_mount_link/right_robotiq_85_base_link/right_robotiq_85_left_knuckle_link/right_robotiq_85_left_finger_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2/right_fr3v2_1_link3/right_fr3v2_1_link4/right_fr3v2_1_link5/right_fr3v2_1_link6/right_fr3v2_1_link7/right_fr3v2_1_link8/right_ur_to_robotiq_link/right_gripper_mount_link/right_robotiq_85_base_link/right_robotiq_85_left_knuckle_link/right_robotiq_85_left_finger_link/right_robotiq_85_left_finger_tip_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2/right_fr3v2_1_link3/right_fr3v2_1_link4/right_fr3v2_1_link5/right_fr3v2_1_link6/right_fr3v2_1_link7/right_fr3v2_1_link8/right_ur_to_robotiq_link/right_gripper_mount_link/right_robotiq_85_base_link/right_robotiq_85_right_knuckle_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2/right_fr3v2_1_link3/right_fr3v2_1_link4/right_fr3v2_1_link5/right_fr3v2_1_link6/right_fr3v2_1_link7/right_fr3v2_1_link8/right_ur_to_robotiq_link/right_gripper_mount_link/right_robotiq_85_base_link/right_robotiq_85_right_knuckle_link/right_robotiq_85_right_finger_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2/right_fr3v2_1_link3/right_fr3v2_1_link4/right_fr3v2_1_link5/right_fr3v2_1_link6/right_fr3v2_1_link7/right_fr3v2_1_link8/right_ur_to_robotiq_link/right_gripper_mount_link/right_robotiq_85_base_link/right_robotiq_85_right_knuckle_link/right_robotiq_85_right_finger_link/right_robotiq_85_right_finger_tip_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2/right_fr3v2_1_link3/right_fr3v2_1_link4/right_fr3v2_1_link5/right_fr3v2_1_link6/right_fr3v2_1_link7/right_fr3v2_1_link8/right_ur_to_robotiq_link/right_gripper_mount_link/right_robotiq_85_base_link/right_robotiq_85_left_inner_knuckle_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2/right_fr3v2_1_link3/right_fr3v2_1_link4/right_fr3v2_1_link5/right_fr3v2_1_link6/right_fr3v2_1_link7/right_fr3v2_1_link8/right_ur_to_robotiq_link/right_gripper_mount_link/right_robotiq_85_base_link/right_robotiq_85_right_inner_knuckle_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2/right_fr3v2_1_link3/right_fr3v2_1_link4/right_fr3v2_1_link5/right_fr3v2_1_link6/right_fr3v2_1_link7/right_fr3v2_1_link8/right_ur_to_robotiq_link/right_gripper_mount_link/right_robotiq_85_base_link/right__wrist_camera_mount_casing_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2/right_fr3v2_1_link3/right_fr3v2_1_link4/right_fr3v2_1_link5/right_fr3v2_1_link6/right_fr3v2_1_link7/right_fr3v2_1_link8/right_ur_to_robotiq_link/right_gripper_mount_link/right_robotiq_85_base_link/right__wrist_camera_mount_casing_link/right__wrist_camera_mount_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2/right_fr3v2_1_link3/right_fr3v2_1_link4/right_fr3v2_1_link5/right_fr3v2_1_link6/right_fr3v2_1_link7/right_fr3v2_1_link8/right_ur_to_robotiq_link/right_gripper_mount_link/right_robotiq_85_base_link/right__wrist_camera_mount_casing_link/right__wrist_camera_mount_link/right__wrist_camera_bottom_screw_frame>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/fr3_duo_mount_origin/fr3_duo_mount_right/right_base/right_fr3v2_1_link0/right_fr3v2_1_link1/right_fr3v2_1_link2/right_fr3v2_1_link3/right_fr3v2_1_link4/right_fr3v2_1_link5/right_fr3v2_1_link6/right_fr3v2_1_link7/right_fr3v2_1_link8/right_ur_to_robotiq_link/right_gripper_mount_link/right_robotiq_85_base_link/right__wrist_camera_mount_casing_link/right__wrist_camera_mount_link/right__wrist_camera_bottom_screw_frame/right__wrist_camera_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/head_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/head_link/head_camera_mounting_point>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/head_link/head_camera_mounting_point/head_camera_link>,
+        </fr3_duo_with_vision_and_manipulation_kit/Geometry/base/base_link/franka_spine/franka_spine_mounting_point/fr3_duo_mount_mounting_point/head_link/head_camera_mounting_point/head_camera_link/head_camera_center>,
+    ]
+    token isaac:robotType = "Default"
+
+    over "Geometry"
+    {
+        over "base"
+        {
+            over "base_link" (
+                prepend apiSchemas = ["IsaacLinkAPI"]
+            )
+            {
+                over "caster_front_left_fixed_link" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "caster_front_left_steering_link" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "caster_front_left_link" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                        }
+                    }
+                }
+
+                over "argo_drive_front_fixed_link" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "argo_drive_front_steering_link" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "argo_drive_front_link" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                        }
+                    }
+                }
+
+                over "rocker_arm_link" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "caster_rear_right_fixed_link" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "caster_rear_right_steering_link" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                            over "caster_rear_right_link" (
+                                prepend apiSchemas = ["IsaacLinkAPI"]
+                            )
+                            {
+                            }
+                        }
+                    }
+
+                    over "argo_drive_rear_fixed_link" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "argo_drive_rear_steering_link" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                            over "argo_drive_rear_link" (
+                                prepend apiSchemas = ["IsaacLinkAPI"]
+                            )
+                            {
+                            }
+                        }
+                    }
+                }
+
+                over "imu_mounting_point" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "imu_body_link" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "imu_bottom_link" (
+                            prepend apiSchemas = ["IsaacSiteAPI"]
+                        )
+                        {
+                        }
+
+                        over "imu_top_link" (
+                            prepend apiSchemas = ["IsaacSiteAPI"]
+                        )
+                        {
+                        }
+                    }
+                }
+
+                over "front_mounting_point" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "camera_front_bottom_screw_frame" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "camera_front_link" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                        }
+                    }
+                }
+
+                over "rear_mounting_point" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "camera_rear_bottom_screw_frame" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "camera_rear_link" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                        }
+                    }
+                }
+
+                over "right_mounting_point" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "camera_right_bottom_screw_frame" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "camera_right_link" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                        }
+                    }
+                }
+
+                over "left_mounting_point" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "camera_left_bottom_screw_frame" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "camera_left_link" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                        }
+                    }
+                }
+
+                over "lidar_front_mounting_point" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "lidar_front_base" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "lidar_front" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                        }
+                    }
+                }
+
+                over "lidar_rear_mounting_point" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "lidar_rear_base" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "lidar_rear" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                        }
+                    }
+                }
+
+                over "franka_spine" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                    over "franka_spine_mounting_point" (
+                        prepend apiSchemas = ["IsaacLinkAPI"]
+                    )
+                    {
+                        over "fr3_duo_mount_mounting_point" (
+                            prepend apiSchemas = ["IsaacLinkAPI"]
+                        )
+                        {
+                            over "fr3_duo_mount_origin" (
+                                prepend apiSchemas = ["IsaacLinkAPI"]
+                            )
+                            {
+                                over "fr3_duo_mount_left" (
+                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                )
+                                {
+                                    over "left_base" (
+                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                    )
+                                    {
+                                        over "left_fr3v2_1_link0" (
+                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                        )
+                                        {
+                                            over "left_fr3v2_1_link1" (
+                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                            )
+                                            {
+                                                over "left_fr3v2_1_link2" (
+                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                )
+                                                {
+                                                    over "left_fr3v2_1_link3" (
+                                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                                    )
+                                                    {
+                                                        over "left_fr3v2_1_link4" (
+                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                        )
+                                                        {
+                                                            over "left_fr3v2_1_link5" (
+                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                            )
+                                                            {
+                                                                over "left_fr3v2_1_link6" (
+                                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                )
+                                                                {
+                                                                    over "left_fr3v2_1_link7" (
+                                                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                    )
+                                                                    {
+                                                                        over "left_fr3v2_1_link8" (
+                                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                        )
+                                                                        {
+                                                                            over "left_ur_to_robotiq_link" (
+                                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                            )
+                                                                            {
+                                                                                over "left_gripper_mount_link" (
+                                                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                )
+                                                                                {
+                                                                                    over "left_robotiq_85_base_link" (
+                                                                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                    )
+                                                                                    {
+                                                                                        over "left_robotiq_85_left_knuckle_link" (
+                                                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                        )
+                                                                                        {
+                                                                                            over "left_robotiq_85_left_finger_link" (
+                                                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                            )
+                                                                                            {
+                                                                                                over "left_robotiq_85_left_finger_tip_link" (
+                                                                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                                )
+                                                                                                {
+                                                                                                }
+                                                                                            }
+                                                                                        }
+
+                                                                                        over "left_robotiq_85_right_knuckle_link" (
+                                                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                        )
+                                                                                        {
+                                                                                            over "left_robotiq_85_right_finger_link" (
+                                                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                            )
+                                                                                            {
+                                                                                                over "left_robotiq_85_right_finger_tip_link" (
+                                                                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                                )
+                                                                                                {
+                                                                                                }
+                                                                                            }
+                                                                                        }
+
+                                                                                        over "left_robotiq_85_left_inner_knuckle_link" (
+                                                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                        )
+                                                                                        {
+                                                                                        }
+
+                                                                                        over "left_robotiq_85_right_inner_knuckle_link" (
+                                                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                        )
+                                                                                        {
+                                                                                        }
+
+                                                                                        over "left__wrist_camera_mount_casing_link" (
+                                                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                        )
+                                                                                        {
+                                                                                            over "left__wrist_camera_mount_link" (
+                                                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                            )
+                                                                                            {
+                                                                                                over "left__wrist_camera_bottom_screw_frame" (
+                                                                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                                )
+                                                                                                {
+                                                                                                    over "left__wrist_camera_link" (
+                                                                                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                                    )
+                                                                                                    {
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+
+                                                                over "left_fr3v2_1_link5_accelerometer_top" (
+                                                                    prepend apiSchemas = ["IsaacSiteAPI"]
+                                                                )
+                                                                {
+                                                                }
+
+                                                                over "left_fr3v2_1_link5_accelerometer_bottom" (
+                                                                    prepend apiSchemas = ["IsaacSiteAPI"]
+                                                                )
+                                                                {
+                                                                }
+                                                            }
+
+                                                            over "left_fr3v2_1_link4_accelerometer_top" (
+                                                                prepend apiSchemas = ["IsaacSiteAPI"]
+                                                            )
+                                                            {
+                                                            }
+
+                                                            over "left_fr3v2_1_link4_accelerometer_bottom" (
+                                                                prepend apiSchemas = ["IsaacSiteAPI"]
+                                                            )
+                                                            {
+                                                            }
+                                                        }
+
+                                                        over "left_fr3v2_1_link3_accelerometer_top" (
+                                                            prepend apiSchemas = ["IsaacSiteAPI"]
+                                                        )
+                                                        {
+                                                        }
+
+                                                        over "left_fr3v2_1_link3_accelerometer_bottom" (
+                                                            prepend apiSchemas = ["IsaacSiteAPI"]
+                                                        )
+                                                        {
+                                                        }
+                                                    }
+
+                                                    over "left_fr3v2_1_link2_accelerometer_top" (
+                                                        prepend apiSchemas = ["IsaacSiteAPI"]
+                                                    )
+                                                    {
+                                                    }
+
+                                                    over "left_fr3v2_1_link2_accelerometer_bottom" (
+                                                        prepend apiSchemas = ["IsaacSiteAPI"]
+                                                    )
+                                                    {
+                                                    }
+                                                }
+
+                                                over "left_fr3v2_1_link1_accelerometer_top" (
+                                                    prepend apiSchemas = ["IsaacSiteAPI"]
+                                                )
+                                                {
+                                                }
+
+                                                over "left_fr3v2_1_link1_accelerometer_bottom" (
+                                                    prepend apiSchemas = ["IsaacSiteAPI"]
+                                                )
+                                                {
+                                                }
+                                            }
+
+                                            over "left_fr3v2_1_link0_accelerometer_top" (
+                                                prepend apiSchemas = ["IsaacSiteAPI"]
+                                            )
+                                            {
+                                            }
+
+                                            over "left_fr3v2_1_link0_accelerometer_bottom" (
+                                                prepend apiSchemas = ["IsaacSiteAPI"]
+                                            )
+                                            {
+                                            }
+                                        }
+                                    }
+                                }
+
+                                over "fr3_duo_mount_right" (
+                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                )
+                                {
+                                    over "right_base" (
+                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                    )
+                                    {
+                                        over "right_fr3v2_1_link0" (
+                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                        )
+                                        {
+                                            over "right_fr3v2_1_link1" (
+                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                            )
+                                            {
+                                                over "right_fr3v2_1_link2" (
+                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                )
+                                                {
+                                                    over "right_fr3v2_1_link3" (
+                                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                                    )
+                                                    {
+                                                        over "right_fr3v2_1_link4" (
+                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                        )
+                                                        {
+                                                            over "right_fr3v2_1_link5" (
+                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                            )
+                                                            {
+                                                                over "right_fr3v2_1_link6" (
+                                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                )
+                                                                {
+                                                                    over "right_fr3v2_1_link7" (
+                                                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                    )
+                                                                    {
+                                                                        over "right_fr3v2_1_link8" (
+                                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                        )
+                                                                        {
+                                                                            over "right_ur_to_robotiq_link" (
+                                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                            )
+                                                                            {
+                                                                                over "right_gripper_mount_link" (
+                                                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                )
+                                                                                {
+                                                                                    over "right_robotiq_85_base_link" (
+                                                                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                    )
+                                                                                    {
+                                                                                        over "right_robotiq_85_left_knuckle_link" (
+                                                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                        )
+                                                                                        {
+                                                                                            over "right_robotiq_85_left_finger_link" (
+                                                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                            )
+                                                                                            {
+                                                                                                over "right_robotiq_85_left_finger_tip_link" (
+                                                                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                                )
+                                                                                                {
+                                                                                                }
+                                                                                            }
+                                                                                        }
+
+                                                                                        over "right_robotiq_85_right_knuckle_link" (
+                                                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                        )
+                                                                                        {
+                                                                                            over "right_robotiq_85_right_finger_link" (
+                                                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                            )
+                                                                                            {
+                                                                                                over "right_robotiq_85_right_finger_tip_link" (
+                                                                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                                )
+                                                                                                {
+                                                                                                }
+                                                                                            }
+                                                                                        }
+
+                                                                                        over "right_robotiq_85_left_inner_knuckle_link" (
+                                                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                        )
+                                                                                        {
+                                                                                        }
+
+                                                                                        over "right_robotiq_85_right_inner_knuckle_link" (
+                                                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                        )
+                                                                                        {
+                                                                                        }
+
+                                                                                        over "right__wrist_camera_mount_casing_link" (
+                                                                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                        )
+                                                                                        {
+                                                                                            over "right__wrist_camera_mount_link" (
+                                                                                                prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                            )
+                                                                                            {
+                                                                                                over "right__wrist_camera_bottom_screw_frame" (
+                                                                                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                                )
+                                                                                                {
+                                                                                                    over "right__wrist_camera_link" (
+                                                                                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                                                                                    )
+                                                                                                    {
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+
+                                                                over "right_fr3v2_1_link5_accelerometer_top" (
+                                                                    prepend apiSchemas = ["IsaacSiteAPI"]
+                                                                )
+                                                                {
+                                                                }
+
+                                                                over "right_fr3v2_1_link5_accelerometer_bottom" (
+                                                                    prepend apiSchemas = ["IsaacSiteAPI"]
+                                                                )
+                                                                {
+                                                                }
+                                                            }
+
+                                                            over "right_fr3v2_1_link4_accelerometer_top" (
+                                                                prepend apiSchemas = ["IsaacSiteAPI"]
+                                                            )
+                                                            {
+                                                            }
+
+                                                            over "right_fr3v2_1_link4_accelerometer_bottom" (
+                                                                prepend apiSchemas = ["IsaacSiteAPI"]
+                                                            )
+                                                            {
+                                                            }
+                                                        }
+
+                                                        over "right_fr3v2_1_link3_accelerometer_top" (
+                                                            prepend apiSchemas = ["IsaacSiteAPI"]
+                                                        )
+                                                        {
+                                                        }
+
+                                                        over "right_fr3v2_1_link3_accelerometer_bottom" (
+                                                            prepend apiSchemas = ["IsaacSiteAPI"]
+                                                        )
+                                                        {
+                                                        }
+                                                    }
+
+                                                    over "right_fr3v2_1_link2_accelerometer_top" (
+                                                        prepend apiSchemas = ["IsaacSiteAPI"]
+                                                    )
+                                                    {
+                                                    }
+
+                                                    over "right_fr3v2_1_link2_accelerometer_bottom" (
+                                                        prepend apiSchemas = ["IsaacSiteAPI"]
+                                                    )
+                                                    {
+                                                    }
+                                                }
+
+                                                over "right_fr3v2_1_link1_accelerometer_top" (
+                                                    prepend apiSchemas = ["IsaacSiteAPI"]
+                                                )
+                                                {
+                                                }
+
+                                                over "right_fr3v2_1_link1_accelerometer_bottom" (
+                                                    prepend apiSchemas = ["IsaacSiteAPI"]
+                                                )
+                                                {
+                                                }
+                                            }
+
+                                            over "right_fr3v2_1_link0_accelerometer_top" (
+                                                prepend apiSchemas = ["IsaacSiteAPI"]
+                                            )
+                                            {
+                                            }
+
+                                            over "right_fr3v2_1_link0_accelerometer_bottom" (
+                                                prepend apiSchemas = ["IsaacSiteAPI"]
+                                            )
+                                            {
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            over "head_link" (
+                                prepend apiSchemas = ["IsaacLinkAPI"]
+                            )
+                            {
+                                over "head_camera_mounting_point" (
+                                    prepend apiSchemas = ["IsaacLinkAPI"]
+                                )
+                                {
+                                    over "head_camera_link" (
+                                        prepend apiSchemas = ["IsaacLinkAPI"]
+                                    )
+                                    {
+                                        over "head_camera_center" (
+                                            prepend apiSchemas = ["IsaacLinkAPI"]
+                                        )
+                                        {
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                over "base_inertia" (
+                    prepend apiSchemas = ["IsaacLinkAPI"]
+                )
+                {
+                }
+            }
+        }
+    }
+
+    over "Physics"
+    {
+        over "base_inertia_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "caster_front_left_fixed_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "caster_front_left_steering_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "caster_front_left_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "argo_drive_front_fixed_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "tmrv0_2_joint_0" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "tmrv0_2_joint_1" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "rocker_arm_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "caster_rear_right_fixed_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "caster_rear_right_steering_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "caster_rear_right_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "argo_drive_rear_fixed_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "tmrv0_2_joint_2" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "tmrv0_2_joint_3" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "imu_mounting_point_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "front_mounting_point_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "rear_mounting_point_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_mounting_point_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_mounting_point_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "lidar_front_mounting_point_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "lidar_rear_mounting_point_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "franka_spine_fixed_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "franka_spine_vertical_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "fr3_duo_mount_origin_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "fr3_duo_mount_left_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "fr3_duo_mount_right_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "mount_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "head_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "head_camera_mounting_point_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_base_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_fr3v2_1_left_base_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_fr3v2_1_joint1" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_fr3v2_1_joint2" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_fr3v2_1_joint3" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_fr3v2_1_joint4" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_fr3v2_1_joint5" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_fr3v2_1_joint6" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_fr3v2_1_joint7" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_fr3v2_1_joint8" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_base_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_fr3v2_1_right_base_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_fr3v2_1_joint1" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_fr3v2_1_joint2" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_fr3v2_1_joint3" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_fr3v2_1_joint4" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_fr3v2_1_joint5" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_fr3v2_1_joint6" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_fr3v2_1_joint7" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_fr3v2_1_joint8" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_ur_to_robotiq_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_gripper_side_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_robotiq_85_base_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_robotiq_85_left_knuckle_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_robotiq_85_right_knuckle_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_robotiq_85_left_finger_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_robotiq_85_right_finger_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_robotiq_85_left_inner_knuckle_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_robotiq_85_right_inner_knuckle_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_robotiq_85_left_finger_tip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left_robotiq_85_right_finger_tip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left__wrist_camera_mount_base_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left__wrist_camera_mount_attachment_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left__wrist_camera_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "left__wrist_camera_link_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_ur_to_robotiq_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_gripper_side_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_robotiq_85_base_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_robotiq_85_left_knuckle_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_robotiq_85_right_knuckle_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_robotiq_85_left_finger_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_robotiq_85_right_finger_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_robotiq_85_left_inner_knuckle_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_robotiq_85_right_inner_knuckle_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_robotiq_85_left_finger_tip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right_robotiq_85_right_finger_tip_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right__wrist_camera_mount_base_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right__wrist_camera_mount_attachment_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right__wrist_camera_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "right__wrist_camera_link_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "head_camera_center_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "head_camera_mounting_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "imu_body_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "camera_front_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "camera_front_link_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "camera_rear_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "camera_rear_link_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "camera_left_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "camera_left_link_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "camera_right_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "camera_right_link_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "lidar_front_base_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "lidar_front_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "lidar_rear_base_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+
+        over "lidar_rear_joint" (
+            prepend apiSchemas = ["IsaacJointAPI"]
+        )
+        {
+        }
+    }
+}
+

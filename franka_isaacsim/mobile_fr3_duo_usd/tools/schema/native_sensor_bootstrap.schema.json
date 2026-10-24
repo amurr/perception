@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "isaacsim6-native-sensor-bootstrap",
+  "title": "Isaac Sim 6 native sensor bootstrap config",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "model_name",
+    "profile_name",
+    "entrypoint_relative",
+    "robot_reference_prim",
+    "native_sensor_child_name",
+    "calibration_policy",
+    "expected_device_count",
+    "expected_by_class",
+    "devices",
+    "invocation"
+  ],
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "model_name": { "type": "string", "minLength": 1 },
+    "profile_name": { "type": "string", "minLength": 1 },
+    "entrypoint_relative": {
+      "type": "string",
+      "const": "worlds/sensorized_world.usda"
+    },
+    "robot_reference_prim": { "type": "string", "minLength": 1 },
+    "native_sensor_child_name": { "type": "string", "const": "NativeSensor" },
+    "calibration_policy": {
+      "type": "string",
+      "enum": ["synthetic_simulation", "hardware"]
+    },
+    "expected_device_count": { "type": "integer", "minimum": 1 },
+    "expected_by_class": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["camera", "lidar_2d", "imu"],
+      "properties": {
+        "camera": { "type": "integer", "minimum": 0 },
+        "lidar_2d": { "type": "integer", "minimum": 0 },
+        "imu": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "devices": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "logical_name",
+          "device_class",
+          "frame_name_suffix",
+          "outputs"
+        ],
+        "properties": {
+          "logical_name": { "type": "string", "minLength": 1 },
+          "device_class": { "type": "string", "minLength": 1 },
+          "frame_name_suffix": { "type": "string", "minLength": 1 },
+          "outputs": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "invocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["script", "notes"],
+      "properties": {
+        "script": { "type": "string", "const": "bootstrap_native_sensors.py" },
+        "notes": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

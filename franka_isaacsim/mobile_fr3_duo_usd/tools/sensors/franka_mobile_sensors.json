@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "profile_name": "franka_mobile_sensors",
+  "model_name": "franka_mobile_sensors",
+  "calibration_policy": "synthetic_simulation",
+  "notes": "TMR sensor suite: four D455 RGB/depth rigs, front/rear SICK nanoScan3 lidars, and OLV IMU. Calibration values are synthetic simulation profiles.",
+  "devices": [
+    {
+      "logical_name": "camera_front_d455_rgb",
+      "device_class": "rgb_depth_camera",
+      "hardware_model": "realsense_d455",
+      "role": "front_rgb",
+      "frame_name_suffix": "camera_front_color_optical_frame",
+      "outputs": ["rgb"],
+      "native_contract": {
+        "backend": "isaac_sim_native",
+        "topic_bridge": "none"
+      },
+      "simulation_calibration": {
+        "source": "synthetic_simulation",
+        "resolution_hw": [720, 1280],
+        "focal_length_px": [650.0, 650.0],
+        "principal_point_px": [640.0, 360.0]
+      }
+    },
+    {
+      "logical_name": "camera_front_d455_depth",
+      "device_class": "rgb_depth_camera",
+      "hardware_model": "realsense_d455",
+      "role": "front_depth",
+      "frame_name_suffix": "camera_front_depth_optical_frame",
+      "outputs": ["depth"],
+      "native_contract": {
+        "backend": "isaac_sim_native",
+        "topic_bridge": "none"
+      },
+      "simulation_calibration": {
+        "source": "synthetic_simulation",
+        "resolution_hw": [720, 1280],
+        "focal_length_px": [650.0, 650.0],
+        "principal_point_px": [640.0, 360.0],
+        "depth_noise_std_m": 0.01,
+        "min_range_m": 0.4,
+        "max_range_m": 6.0
+      }
+    },
+    {
+      "logical_name": "camera_rear_d455_rgb",
+      "device_class": "rgb_depth_camera",
+      "hardware_model": "realsense_d455",
+      "role": "rear_rgb",
+      "frame_name_suffix": "camera_rear_color_optical_frame",
+      "outputs": ["rgb"],
+      "native_contract": {
+        "backend": "isaac_sim_native",
+        "topic_bridge": "none"
+      },
+      "simulation_calibration": {
+        "source": "synthetic_simulation",
+        "resolution_hw": [720, 1280],
+        "focal_length_px": [650.0, 650.0],
+        "principal_point_px": [640.0, 360.0]
+      }
+    },
+    {
+      "logical_name": "camera_rear_d455_depth",
+      "device_class": "rgb_depth_camera",
+      "hardware_model": "realsense_d455",
+      "role": "rear_depth",
+      "frame_name_suffix": "camera_rear_depth_optical_frame",
+      "outputs": ["depth"],
+      "native_contract": {
+        "backend": "isaac_sim_native",
+        "topic_bridge": "none"
+      },
+      "simulation_calibration": {
+        "source": "synthetic_simulation",
+        "resolution_hw": [720, 1280],
+        "focal_length_px": [650.0, 650.0],
+        "principal_point_px": [640.0, 360.0],
+        "depth_noise_std_m": 0.01,
+        "min_range_m": 0.4,
+        "max_range_m": 6.0
+      }
+    },
+    {
+      "logical_name": "camera_left_d455_rgb",
+      "device_class": "rgb_depth_camera",
+      "hardware_model": "realsense_d455",
+      "role": "left_rgb",
+      "frame_name_suffix": "camera_left_color_optical_frame",
+      "outputs": ["rgb"],
+      "native_contract": {
+        "backend": "isaac_sim_native",
+        "topic_bridge": "none"
+      },
+      "simulation_calibration": {
+        "source": "synthetic_simulation",
+        "resolution_hw": [720, 1280],
+        "focal_length_px": [650.0, 650.0],
+        "principal_point_px": [640.0, 360.0]
+      }
+    },
+    {
+      "logical_name": "camera_left_d455_depth",
+      "device_class": "rgb_depth_camera",
+      "hardware_model": "realsense_d455",
+      "role": "left_depth",
+      "frame_name_suffix": "camera_left_depth_optical_frame",
+      "outputs": ["depth"],
+      "native_contract": {
+        "backend": "isaac_sim_native",
+        "topic_bridge": "none"
+      },
+      "simulation_calibration": {
+        "source": "synthetic_simulation",
+        "resolution_hw": [720, 1280],
+        "focal_length_px": [650.0, 650.0],
+        "principal_point_px": [640.0, 360.0],
+        "depth_noise_std_m": 0.01,
+        "min_range_m": 0.4,
+        "max_range_m": 6.0
+      }
+    },
+    {
+      "logical_name": "camera_right_d455_rgb",
+      "device_class": "rgb_depth_camera",
+      "hardware_model": "realsense_d455",
+      "role": "right_rgb",
+      "frame_name_suffix": "camera_right_color_optical_frame",
+      "outputs": ["rgb"],
+      "native_contract": {
+        "backend": "isaac_sim_native",
+        "topic_bridge": "none"
+      },
+      "simulation_calibration": {
+        "source": "synthetic_simulation",
+        "resolution_hw": [720, 1280],
+        "focal_length_px": [650.0, 650.0],
+        "principal_point_px": [640.0, 360.0]
+      }
+    },
+    {
+      "logical_name": "camera_right_d455_depth",
+      "device_class": "rgb_depth_camera",
+      "hardware_model": "realsense_d455",
+      "role": "right_depth",
+      "frame_name_suffix": "camera_right_depth_optical_frame",
+      "outputs": ["depth"],
+      "native_contract": {
+        "backend": "isaac_sim_native",
+        "topic_bridge": "none"
+      },
+      "simulation_calibration": {
+        "source": "synthetic_simulation",
+        "resolution_hw": [720, 1280],
+        "focal_length_px": [650.0, 650.0],
+        "principal_point_px": [640.0, 360.0],
+        "depth_noise_std_m": 0.01,
+        "min_range_m": 0.4,
+        "max_range_m": 6.0
+      }
+    },
+    {
+      "logical_name": "lidar_front_sick",
+      "device_class": "lidar_2d",
+      "hardware_model": "sick_nanoscan3",
+      "role": "front_lidar",
+      "frame_name_suffix": "lidar_front",
+      "outputs": ["range_scan", "point_cloud"],
+      "native_contract": {
+        "backend": "isaac_sim_native",
+        "topic_bridge": "none"
+      },
+      "simulation_calibration": {
+        "source": "synthetic_simulation",
+        "horizontal_fov_deg": 275.0,
+        "min_range_m": 0.05,
+        "max_range_m": 40.0,
+        "scan_frequency_hz": 30.0,
+        "range_noise_std_m": 0.02,
+        "notes": "Synthetic nanoScan3 FOV/range/noise for simulation."
+      }
+    },
+    {
+      "logical_name": "lidar_rear_sick",
+      "device_class": "lidar_2d",
+      "hardware_model": "sick_nanoscan3",
+      "role": "rear_lidar",
+      "frame_name_suffix": "lidar_rear",
+      "outputs": ["range_scan", "point_cloud"],
+      "native_contract": {
+        "backend": "isaac_sim_native",
+        "topic_bridge": "none"
+      },
+      "simulation_calibration": {
+        "source": "synthetic_simulation",
+        "horizontal_fov_deg": 275.0,
+        "min_range_m": 0.05,
+        "max_range_m": 40.0,
+        "scan_frequency_hz": 30.0,
+        "range_noise_std_m": 0.02,
+        "notes": "Synthetic nanoScan3 FOV/range/noise for simulation."
+      }
+    },
+    {
+      "logical_name": "olv_imu",
+      "device_class": "imu",
+      "hardware_model": "olv_imu01",
+      "role": "base_imu",
+      "frame_name_suffix": "imu_body_link",
+      "outputs": ["linear_acceleration", "angular_velocity"],
+      "native_contract": {
+        "backend": "isaac_sim_native",
+        "topic_bridge": "none"
+      },
+      "simulation_calibration": {
+        "source": "synthetic_simulation",
+        "sample_rate_hz": 100.0,
+        "accel_noise_std_m_s2": 0.05,
+        "gyro_noise_std_rad_s": 0.01
+      }
+    }
+  ]
+}

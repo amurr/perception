@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "model_name": "mobile_fr3_duo_with_vision_and_manipulation_kit",
+  "robot_prim": "/World/Robot/fr3_duo_with_vision_and_manipulation_kit",
+  "namespace": "fr3_duo",
+  "depth_cameras": [
+    {
+      "name": "head_depth",
+      "frame_prim_suffix": "head_left_camera_frame_optical",
+      "frame_id": "head_left_camera_frame_optical",
+      "image_topic": "head/depth/image_raw",
+      "camera_info_topic": "head/depth/camera_info",
+      "resolution_hw": [720, 1280],
+      "focal_length_px": [700.0, 700.0],
+      "principal_point_px": [640.0, 360.0],
+      "min_range_m": 0.1,
+      "max_range_m": 10.0
+    },
+    {
+      "name": "left_wrist_depth",
+      "frame_prim_suffix": "left__wrist_camera_depth_optical_frame",
+      "frame_id": "left__wrist_camera_depth_optical_frame",
+      "image_topic": "left_wrist/depth/image_raw",
+      "camera_info_topic": "left_wrist/depth/camera_info",
+      "resolution_hw": [480, 848],
+      "focal_length_px": [430.0, 430.0],
+      "principal_point_px": [424.0, 240.0],
+      "min_range_m": 0.07,
+      "max_range_m": 0.5
+    },
+    {
+      "name": "right_wrist_depth",
+      "frame_prim_suffix": "right__wrist_camera_depth_optical_frame",
+      "frame_id": "right__wrist_camera_depth_optical_frame",
+      "image_topic": "right_wrist/depth/image_raw",
+      "camera_info_topic": "right_wrist/depth/camera_info",
+      "resolution_hw": [480, 848],
+      "focal_length_px": [430.0, 430.0],
+      "principal_point_px": [424.0, 240.0],
+      "min_range_m": 0.07,
+      "max_range_m": 0.5
+    }
+  ],
+  "joint_groups": [
+    {
+      "name": "left_arm_gripper",
+      "state_topic": "left_arm/joint_states",
+      "command_topic": "left_arm/joint_commands",
+      "joint_name_prefixes": ["left_fr3v2_1_joint", "left_robotiq_85_"]
+    },
+    {
+      "name": "right_arm_gripper",
+      "state_topic": "right_arm/joint_states",
+      "command_topic": "right_arm/joint_commands",
+      "joint_name_prefixes": ["right_fr3v2_1_joint", "right_robotiq_85_"]
+    }
+  ]
+}

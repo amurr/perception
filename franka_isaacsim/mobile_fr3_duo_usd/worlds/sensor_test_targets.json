@@ -1,0 +1,314 @@
+{
+  "schema_version": 1,
+  "world_name": "sensor_test_world",
+  "model": "mobile_fr3_duo_with_vision_and_manipulation_kit",
+  "entrypoint": "worlds/sensor_test_world.usda",
+  "robot_reference": "../mobile_fr3_duo_with_vision_and_manipulation_kit.usda",
+  "limitation": "This world supplies visual/geometric camera and lidar targets only. It does not add Isaac sensor plugins, synthesize sensor outputs, or prove plugin/output correctness; that remains a separate user test round.",
+  "gravity_m_s2": [
+    0.0,
+    0.0,
+    -9.81
+  ],
+  "floor": {
+    "size_m": 20.0,
+    "thickness_m": 1.0,
+    "top_z_m": 0.0,
+    "static_friction": 1.0,
+    "dynamic_friction": 0.9,
+    "restitution": 0.0,
+    "color_rgb": [
+      0.55,
+      0.55,
+      0.55
+    ]
+  },
+  "robot_spawn": {
+    "translation_m": [
+      0.0,
+      0.0,
+      0.05
+    ],
+    "rotate_xyz_deg": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "clear_corridor": {
+    "x_min_m": -1.0,
+    "x_max_m": 1.2,
+    "y_min_m": -1.0,
+    "y_max_m": 1.0,
+    "description": "Immediate spawn and short forward/reverse corridor kept free of solid targets."
+  },
+  "materials": {
+    "red": [
+      0.85,
+      0.05,
+      0.05
+    ],
+    "green": [
+      0.05,
+      0.75,
+      0.1
+    ],
+    "blue": [
+      0.05,
+      0.25,
+      0.9
+    ],
+    "yellow": [
+      0.95,
+      0.85,
+      0.05
+    ],
+    "magenta": [
+      0.85,
+      0.05,
+      0.85
+    ],
+    "white": [
+      0.95,
+      0.95,
+      0.95
+    ],
+    "black": [
+      0.05,
+      0.05,
+      0.05
+    ]
+  },
+  "targets": [
+    {
+      "name": "FarMagentaCylinder",
+      "prim_path": "/World/Targets/FarMagentaCylinder",
+      "shape": "cylinder",
+      "purpose": [
+        "lidar"
+      ],
+      "color": "magenta",
+      "color_rgb": [
+        0.85,
+        0.05,
+        0.85
+      ],
+      "translation_m": [
+        5.5,
+        0.0,
+        0.5
+      ],
+      "rotate_xyz_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dimensions_m": {
+        "x": 0.6,
+        "y": 0.6,
+        "z": 1.0
+      },
+      "collision": true,
+      "range_from_origin_m": 5.5,
+      "bearing_from_origin_deg": 0.0
+    },
+    {
+      "name": "FrontWallWhite",
+      "prim_path": "/World/Targets/FrontWallWhite",
+      "shape": "box",
+      "purpose": [
+        "lidar",
+        "camera"
+      ],
+      "color": "white",
+      "color_rgb": [
+        0.95,
+        0.95,
+        0.95
+      ],
+      "translation_m": [
+        4.0,
+        0.0,
+        0.75
+      ],
+      "rotate_xyz_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dimensions_m": {
+        "x": 0.2,
+        "y": 3.0,
+        "z": 1.5
+      },
+      "collision": true,
+      "range_from_origin_m": 4.0,
+      "bearing_from_origin_deg": 0.0
+    },
+    {
+      "name": "LeftOffsetBlue",
+      "prim_path": "/World/Targets/LeftOffsetBlue",
+      "shape": "box",
+      "purpose": [
+        "lidar",
+        "camera"
+      ],
+      "color": "blue",
+      "color_rgb": [
+        0.05,
+        0.25,
+        0.9
+      ],
+      "translation_m": [
+        3.2,
+        1.8,
+        0.35
+      ],
+      "rotate_xyz_deg": [
+        0.0,
+        0.0,
+        20.0
+      ],
+      "dimensions_m": {
+        "x": 0.5,
+        "y": 0.5,
+        "z": 0.7
+      },
+      "collision": true,
+      "range_from_origin_m": 3.671512,
+      "bearing_from_origin_deg": 29.357754
+    },
+    {
+      "name": "LeftPillarRed",
+      "prim_path": "/World/Targets/LeftPillarRed",
+      "shape": "cylinder",
+      "purpose": [
+        "camera",
+        "lidar"
+      ],
+      "color": "red",
+      "color_rgb": [
+        0.85,
+        0.05,
+        0.05
+      ],
+      "translation_m": [
+        2.5,
+        2.5,
+        0.6
+      ],
+      "rotate_xyz_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dimensions_m": {
+        "x": 0.4,
+        "y": 0.4,
+        "z": 1.2
+      },
+      "collision": true,
+      "range_from_origin_m": 3.535534,
+      "bearing_from_origin_deg": 45.0
+    },
+    {
+      "name": "RightOffsetYellow",
+      "prim_path": "/World/Targets/RightOffsetYellow",
+      "shape": "box",
+      "purpose": [
+        "lidar",
+        "camera"
+      ],
+      "color": "yellow",
+      "color_rgb": [
+        0.95,
+        0.85,
+        0.05
+      ],
+      "translation_m": [
+        3.2,
+        -1.8,
+        0.35
+      ],
+      "rotate_xyz_deg": [
+        0.0,
+        0.0,
+        -20.0
+      ],
+      "dimensions_m": {
+        "x": 0.5,
+        "y": 0.5,
+        "z": 0.7
+      },
+      "collision": true,
+      "range_from_origin_m": 3.671512,
+      "bearing_from_origin_deg": -29.357754
+    },
+    {
+      "name": "RightPillarGreen",
+      "prim_path": "/World/Targets/RightPillarGreen",
+      "shape": "cylinder",
+      "purpose": [
+        "camera",
+        "lidar"
+      ],
+      "color": "green",
+      "color_rgb": [
+        0.05,
+        0.75,
+        0.1
+      ],
+      "translation_m": [
+        2.5,
+        -2.5,
+        0.6
+      ],
+      "rotate_xyz_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dimensions_m": {
+        "x": 0.4,
+        "y": 0.4,
+        "z": 1.2
+      },
+      "collision": true,
+      "range_from_origin_m": 3.535534,
+      "bearing_from_origin_deg": -45.0
+    },
+    {
+      "name": "SideBlackSphere",
+      "prim_path": "/World/Targets/SideBlackSphere",
+      "shape": "sphere",
+      "purpose": [
+        "camera",
+        "lidar"
+      ],
+      "color": "black",
+      "color_rgb": [
+        0.05,
+        0.05,
+        0.05
+      ],
+      "translation_m": [
+        1.5,
+        3.5,
+        0.35
+      ],
+      "rotate_xyz_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "dimensions_m": {
+        "x": 0.7,
+        "y": 0.7,
+        "z": 0.7
+      },
+      "collision": true,
+      "range_from_origin_m": 3.807887,
+      "bearing_from_origin_deg": 66.801409
+    }
+  ]
+}
