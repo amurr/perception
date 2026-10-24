@@ -1,0 +1,37 @@
+# MoveIt -> ros2_control: FollowJointTrajectory per arm and per gripper.
+moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
+
+moveit_simple_controller_manager:
+  controller_names:
+    - left_arm_controller
+    - right_arm_controller
+    - left_gripper_controller
+    - right_gripper_controller
+
+  left_arm_controller:
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints: [left_fr3v2_joint1, left_fr3v2_joint2, left_fr3v2_joint3, left_fr3v2_joint4,
+             left_fr3v2_joint5, left_fr3v2_joint6, left_fr3v2_joint7]
+  right_arm_controller:
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints: [right_fr3v2_joint1, right_fr3v2_joint2, right_fr3v2_joint3, right_fr3v2_joint4,
+             right_fr3v2_joint5, right_fr3v2_joint6, right_fr3v2_joint7]
+  left_gripper_controller:
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints: [left_robotiq_85_left_knuckle_joint]
+  right_gripper_controller:
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints: [right_robotiq_85_left_knuckle_joint]
+
+trajectory_execution:
+  allowed_execution_duration_scaling: 1.5
+  allowed_goal_duration_margin: 1.0
+  allowed_start_tolerance: 0.01

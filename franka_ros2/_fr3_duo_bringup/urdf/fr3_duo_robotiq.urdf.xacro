@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!-- Mobile FR3 duo + Robotiq 2F-85 on both arms, for MoveIt (RViz mock test, later Isaac).
+
+     Same structure as franka_mobile_fr3_duo_moveit_config's moveit URDF: a `base` link with
+     planar_x / planar_y / planar_theta (the SRDF's mobile_base group), arms named fr3v2
+     (left_fr3v2_joint1 ...). No ros2_control here: the launch file adds the hardware block
+     (mock_components for RViz).
+
+     Per arm, below <arm>_fr3v2_link8:
+       <arm>_ur_to_robotiq_link -> <arm>_gripper_mount_link -> <arm>_robotiq_85_base_link (z = approach,
+       fingers close along x) -> <arm>_robotiq_85_tcp: between the fingertip pads, z = approach,
+       y = closing direction (the convention of articulation_orchestrator). -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mobile_fr3_duo_v0_2">
+
+  <xacro:include filename="$(find franka_description)/robots/mobile_fr3_duo_v0_2/mobile_fr3_duo_v0_2.xacro"/>
+  <xacro:include filename="$(find robotiq_description)/urdf/robotiq_2f_85_macro.urdf.xacro"/>
+  <xacro:include filename="$(find robotiq_description)/urdf/ur_to_robotiq_adapter.urdf.xacro"/>
+
+  <xacro:arg name="arm_type" default="fr3v2"/>
+  <!-- TCP: fingertip pad centre above robotiq_85_base_link -->
+  <xacro:arg name="tcp_offset" default="0.13"/>
+  <xacro:property name="arm_type" value="$(arg arm_type)"/>
+  <!-- read as a global by the duo macro -->
+  <xacro:property name="robot_types_list" value="${['tmrv0_2', arm_type, arm_type]}"/>
+
+  <!-- planar base joints, as in the moveit config (planning frame `base`) -->
+  <link name="base"/>
+  <joint name="planar_x" type="prismatic">
+    <parent link="base"/>
+    <child link="virtual_x"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <limit lower="-10" upper="10" effort="1000" velocity="2"/>
+  </joint>
+  <link name="virtual_x"/>
+  <joint name="planar_y" type="prismatic">
+    <parent link="virtual_x"/>
+    <child link="virtual_y"/>
+    <axis xyz="0 1 0"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <limit lower="-10" upper="10" effort="1000" velocity="2"/>
+  </joint>
+  <link name="virtual_y"/>
+  <joint name="planar_theta" type="revolute">
+    <parent link="virtual_y"/>
+    <child link="base_link"/>
+    <axis xyz="0 0 1"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <limit lower="-3.14159" upper="3.14159" effort="1000" velocity="2"/>
+  </joint>
+
+  <xacro:mobile_fr3_duo_v0_2
+      robot_types="${robot_types_list}"
+      hand="false"
+      ee_id="none"
+      include_self_collision_geometry="true"
+      reduced_version="false"
+      description_pkg="franka_description"
+      connected_to="base"
+      use_arms="true"
+      no_prefix="false"
+      special_connection=""
+      xyz_ee="0 0 0"
+      rpy_ee="0 0 ${-pi/4}"
+      tcp_xyz=""
+      tcp_rpy="0 0 0"
+      safety_distance="0.03"
+      with_sc="false">
+    <arm0_extras/>
+    <arm1_extras/>
+  </xacro:mobile_fr3_duo_v0_2>
+
+  <xacro:macro name="robotiq_on_arm" params="side">
+    <!-- same mounting as franka_vision_and_manipulation_kit (adapter rotated -pi/2), no camera -->
+    <xacro:ur_to_robotiq prefix="${side}_" parent="${side}_${arm_type}_link8"
+                         child="${side}_gripper_mount_link" rotation="${-pi/2}"/>
+    <xacro:robotiq_gripper name="${side}_robotiq_gripper_hardware" prefix="${side}_"
+                           parent="${side}_gripper_mount_link" include_ros2_control="false">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:robotiq_gripper>
+    <link name="${side}_robotiq_85_tcp"/>
+    <joint name="${side}_robotiq_85_tcp_joint" type="fixed">
+      <parent link="${side}_robotiq_85_base_link"/>
+      <child link="${side}_robotiq_85_tcp"/>
+      <origin xyz="0 0 $(arg tcp_offset)" rpy="0 0 ${pi/2}"/>
+    </joint>
+  </xacro:macro>
+
+  <xacro:robotiq_on_arm side="left"/>
+  <xacro:robotiq_on_arm side="right"/>
+</robot>

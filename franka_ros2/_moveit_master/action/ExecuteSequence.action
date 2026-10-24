@@ -1,0 +1,12 @@
+# Goal: an ordered list of steps, executed one after another by moveit_master.
+moveit_master/SubMovement[] steps
+float64 velocity_scaling      # 0 = default (0.2)
+---
+# Result
+bool success
+uint32 failed_step            # index of the failing step (valid only if success == false)
+string message
+---
+# Feedback
+uint32 current_step
+string current_label          # SubMovement.label of current_step

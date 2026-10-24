@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>articulation_orchestrator</name>
+  <version>0.0.0</version>
+  <description>Task logic for the FR3 duo: packets from the table into a tray via moveit_master</description>
+  <maintainer email="mursalovartem@gmail.com">artem</maintainer>
+  <license>Apache-2.0</license>
+
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>shape_msgs</exec_depend>
+  <exec_depend>moveit_msgs</exec_depend>
+  <exec_depend>ament_index_python</exec_depend>
+  <exec_depend>moveit_master</exec_depend>
+  <exec_depend>python3-yaml</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>action_msgs</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>builtin_interfaces</exec_depend>
+
+  <!-- trimesh has no rosdep key (not in rosdistro's python.yaml) and is not an
+       apt package; it is a lazy import in planning_scene_updater.py, used only
+       for mesh collision objects. Install it with:
+           pip3 install -r src/articulation_orchestrator/requirements.txt -->
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

@@ -1,0 +1,42 @@
+# 10 packets on the table, both sides of the robot -> tray in the middle (plan step 7).
+# Planning frame = world (robot base_link at the origin, x forward, y left).
+# Laid out for spine height 0.15 m (fr3_duo_bringup rviz_mock.launch.py spine:=0.15): the FR3 bases
+# are then at about (0.44, +-0.05, 0.65). Packets and tray slots are at x >= 0.95: closer to the
+# robot the elbow (joint 4) runs into its limit for top-down grasps (IK map).
+# Positions are starting values: put the Isaac objects at the same poses, with the same spine height.
+frame: world
+
+table:
+  id: table
+  center: [1.05, 0.0]
+  top_z: 0.45
+  size: [0.70, 1.60]          # x, y
+  thickness: 0.04
+
+tray:
+  id: tray
+  center: [1.08, 0.0]
+  yaw_deg: 0.0
+  size: [0.44, 0.32, 0.06]    # outer x, y, height
+  wall: 0.008
+  floor: 0.005
+  slots: [2, 2]               # packets lie along the tray's x; 2 x 2 per layer, then stacked.
+                              # Slots are wide: the closed fingers stick out ~31 mm beside a packet
+
+packets:                      # resting on the table; yaw_deg about world z
+  # left arm side (+y): three rows
+  - {id: packet_01, type: packet_small,  xy: [0.95,  0.31], yaw_deg:   0}
+  - {id: packet_03, type: packet_medium, xy: [1.15,  0.31], yaw_deg:   0}
+  - {id: packet_05, type: packet_flat,   xy: [0.95,  0.50], yaw_deg:  20}
+  - {id: packet_07, type: packet_small,  xy: [1.15,  0.50], yaw_deg: -15}
+  - {id: packet_09, type: packet_medium, xy: [1.05,  0.68], yaw_deg:   0}
+  # right arm side (-y): mirrored
+  - {id: packet_02, type: packet_small,  xy: [0.95, -0.31], yaw_deg:   0}
+  - {id: packet_04, type: packet_medium, xy: [1.15, -0.31], yaw_deg:   0}
+  - {id: packet_06, type: packet_flat,   xy: [0.95, -0.50], yaw_deg: -20}
+  - {id: packet_08, type: packet_small,  xy: [1.15, -0.50], yaw_deg:  15}
+  - {id: packet_10, type: packet_medium, xy: [1.05, -0.68], yaw_deg:   0}
+
+# order of the placements (default: the packets in file order)
+tasks: [packet_01, packet_02, packet_03, packet_04, packet_05,
+        packet_06, packet_07, packet_08, packet_09, packet_10]

@@ -1,0 +1,14 @@
+# moveit_master parameters for the FR3 duo with Robotiq 2F-85 grippers.
+# "{arm}" is replaced by the arm name; set <arm>.<key> (e.g. left.tcp_link) to override one arm.
+moveit_master:
+  ros__parameters:
+    arms: [left, right]
+    default_arm: left
+    arm_group_format: "{arm}_arm"                           # SRDF groups
+    gripper_group_format: "{arm}_gripper"                   # SRDF group with the Robotiq knuckle joint
+    tcp_link_format: "{arm}_robotiq_85_tcp"                 # between the fingertips, z = approach
+    gripper_root_link_format: "{arm}_robotiq_85_base_link"  # + all links below may touch a grasped packet
+    planning_time: 5.0
+    planning_attempts: 5
+    plan_retries: 3                                         # plan again after a failed plan
+    use_sim_time: true                                      # Isaac /clock

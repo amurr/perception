@@ -1,0 +1,47 @@
+# Pick-and-place parameters per object type (scene YAML: packets[].type).
+# Re-read on every packet: with `colcon build --symlink-install` edits take effect without a rebuild.
+#
+# Gripper: Robotiq 2F-85, top-down grasp. TCP = {arm}_robotiq_85_tcp, between the fingertip pads
+# (0.13 m above robotiq_85_base_link).
+# Knuckle joint (gripper group's first active joint): 0.0 rad = open (85 mm) .. 0.8 rad = closed.
+#
+# size                   m,   [length x, width y, height z] of the packet lying on the table
+# grasp_axis                  packet axis the fingers close along: y (across the width) or x
+# grasp_depth            m,   TCP below the packet top at the grasp (pads on the packet sides)
+# min_table_clearance    m,   fingertips never lower than table top + this, also when closed
+#                             (the tips move down while closing: tip_below_tcp() in the orchestrator)
+# approach_height        m,   pre-grasp: TCP above the packet top, then straight down
+# lift_height            m,   straight up after the grasp, before moving to the tray
+# place_hover_clearance  m,   packet bottom above the tray rim (or stack) at the place hover
+# place_drop             m,   packet bottom above the tray floor (or stack) when released
+# gripper_open           rad, before the grasp
+# gripper_close          rad, a bit past contact: Isaac fingers squeeze the packet.
+#                             omitted -> from the width: 0.8 * (1 - width / 0.085) + squeeze
+# squeeze                rad, past contact when gripper_close is computed
+# gripper_release        rad, opening to let go in the tray. omitted -> packet width + release_margin
+#                             (fully open fingers would hit the tray walls)
+# release_margin         m,   see gripper_release
+# settle_time            s,   wait after closing / releasing (contact settling in Isaac)
+
+defaults:
+  grasp_axis: y
+  grasp_depth: 0.015
+  min_table_clearance: 0.003
+  approach_height: 0.10
+  lift_height: 0.10
+  place_hover_clearance: 0.05
+  place_drop: 0.01
+  gripper_open: 0.0
+  squeeze: 0.15
+  release_margin: 0.02
+  settle_time: 0.3
+  max_opening: 0.085
+
+objects:
+  # Sizes are placeholders for the Isaac packet assets: measure the asset's bounding box and update.
+  packet_small:      # snack bag, ~160 x 60 x 35 mm
+    {size: [0.16, 0.06, 0.035]}
+  packet_medium:     # ~200 x 70 x 40 mm
+    {size: [0.20, 0.07, 0.04], grasp_depth: 0.018}
+  packet_flat:       # sachet, ~120 x 50 x 15 mm: grasped low, close to the table
+    {size: [0.12, 0.05, 0.015], grasp_depth: 0.010, squeeze: 0.20}
